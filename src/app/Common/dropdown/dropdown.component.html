@@ -1,0 +1,99 @@
+<div class="btn-group custom-dropdown" dropdown #dropdown="bs-dropdown" [insideClick]="true">
+    <input type="button" class="form-control custom-dropdown-title cursor-pointer" autocomplete="off" dropdownToggle
+        [(ngModel)]="customModel" *ngIf="!setting?.isMulti">
+    <button type="button" class="custom-dropdown-title d-flex justify-content-between gap-2" dropdownToggle
+        *ngIf="setting?.isMulti" aria-controls="dropdown-basic">
+        <ng-container *ngIf="getSelectedItems?.length">
+            <span>{{getSelectedItems[0][setting?.display[0]]}}</span>
+            <span *ngIf="(getSelectedItems?.length??0)>1">
+                {{(getSelectedItems?.length??0)-1}}+
+            </span>
+        </ng-container>
+        <span *ngIf="!getSelectedItems?.length">Select</span>
+    </button>
+    <div id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+        aria-labelledby="button-animated">
+        <ul class="custom-dropdown-menu">
+            <!-- <li class="custom-dropdown-item">
+                <input type="text" name="search-text" id="search-text" placeholder="search..." class="form-control">
+            </li> -->
+            <ng-container *ngIf="setting?.isMulti">
+                <li class="custom-dropdown-item multi">
+                    <div class="table-responsive" (scroll)="onScroll($event)">
+                        <table class="hih-dropdown-table">
+                            <thead>
+                                <tr>
+                                    <ng-container *ngIf="setting.header">
+                                        <th *ngFor="let item of setting.display;let i=index ">
+                                            <div class="form-check ">
+                                                <input type="checkbox" name="selectAll" [(ngModel)]="selectAll"
+                                                    (ngModelChange)="selectAllChange($event)" *ngIf="i==0">
+                                                <label for="" class="mb-0 text-capitalize"> {{item}}</label>
+                                            </div>
+                                        </th>
+                                    </ng-container>
+                                    <ng-container *ngIf="!setting.header">
+                                        <th>
+                                            <div class="form-check ">
+                                                <input type="checkbox" name="selectAll" [(ngModel)]="selectAll"
+                                                    (ngModelChange)="selectAllChange($event)">
+                                                <label for="" class="mb-0 text-capitalize"> Select All </label>
+                                            </div>
+                                        </th>
+                                    </ng-container>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let value of currentValues; let i=index" (click)="onSelect(value)">
+                                    <td *ngFor="let item of setting.display;let j=index">
+                                        <div class="d-flex align-items-center">
+                                            <div class="form-check d-flex" *ngIf="j==0">
+                                                <input type="checkbox" [name]="'name_'+i" [id]="'id_'+i"
+                                                    [(ngModel)]="value.selected">
+                                            </div>
+                                            <label class="check-label">
+                                                <div class="me-2 " *ngIf="setting?.display">
+                                                    {{value[item]}}
+                                                </div>
+                                                <div class="me-2" *ngIf="!setting?.display">
+                                                    {{value}}
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="apply modal-footer d-flex align-items-end flex-nowrap">
+                        <button type="button" class="modal-cancel-button" (click)="dropdown?.hide()">
+                            Cancel
+                        </button>
+                        <button type="button" class="theme-outline-button" (click)="onApply(dropdown)">
+                            Apply
+                        </button>
+                    </div>
+                </li>
+            </ng-container>
+            <ng-container *ngIf="!setting?.isMulti">
+                <li class="custom-dropdown-item single" *ngFor="let value of values; let i=index"
+                    (click)="onSelect(value);dropdown?.hide()">
+                    <div class="d-flex gap-3">
+                        <div class="form-check d-flex align-items-center">
+                            <label class="check-label">
+                                <div class="d-flex gap-3" *ngIf="setting?.display">
+                                    <span *ngFor="let field of setting?.display">
+                                        {{value[field]}}
+                                    </span>
+                                </div>
+                                <div *ngIf="!setting?.display">
+                                    {{value}}
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </li>
+            </ng-container>
+        </ul>
+    </div>
+</div>

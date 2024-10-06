@@ -1,0 +1,328 @@
+:root {
+    --theme-color: #06cddf;
+    --secondary-theme-color: #053958;
+    --light-theme-color: #01acbb;
+    /* --secondary-theme-color: #56ABB1; */
+
+    --menu-color: #888888;
+    --text-color: #222222;
+    --light-color: #96A0B5;
+    --text-white: #ffffff;
+
+    --primary-color: #1A82F6;
+    --success-color: #37B50E;
+    --warning-color: #F5BD26;
+    --danger-color: #FC4D1E;
+    --info-color: #8529C9;
+
+    --light-primary-color: #1A82F625;
+    --light-success-color: #37B50E25;
+    --light-warning-color: #F5BD2625;
+    --light-danger-color: #FC4D1E25;
+    --light-info-color: #8529C925;
+
+    --green-color: #AAFA90;
+    --yellow-color: #FFE0A5;
+    --pink-color: #FFC3F8;
+    --violet-color: #B8B1FF;
+    --blue-color: #A3D5FF;
+    --red-color: #FC7B96;
+    --orange-color: #FFA600;
+    --peach-color: #FFB39D;
+    --maroon-color: #E02828;
+    --hotPink-color: #E5358D;
+    --mud-color: #B57B0E;
+    --info-primary-color: #00bce3;
+
+    --light-green-color: #AAFA9025;
+    --light-yellow-color: #FFE0A525;
+    --light-pink-color: #FFC3F825;
+    --light-violet-color: #B8B1FF25;
+    --light-blue-color: #A3D5FF25;
+    --light-red-color: #FC7B9625;
+    --light-orange-color: #FFA60025;
+    --light-peach-color: #FFB39D25;
+    --light-maroon-color: #E0282815;
+    --light-hotPink-color: #E5358D25;
+    --light-mud-color: #B57B0E25;
+
+    --border-color: #E0E0E0;
+    --light-border-color: #e0e0e08c;
+    --text-light-color: #afafaf;
+    --shadow-color: #00000025;
+
+    --background-color: #fcfcfc;
+    --sidebar-color: #f7f7f7;
+    --highlight-color: #F2FF91;
+}
+
+.text-white {
+    color: var(--text-white) !important;
+}
+
+.text-menu {
+    color: var(--menu-color) !important;
+}
+
+.text-default {
+    color: var(--text-color) !important;
+}
+
+.highlight {
+    background: var(--highlight-color) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+.text-light {
+    color: var(--text-light-color) !important;
+}
+
+.text-green {
+    color: var(--green-color) !important;
+}
+
+.text-violet {
+    color: var(--violet-color) !important;
+}
+
+.text-blue {
+    color: var(--blue-color) !important;
+}
+
+.text-red {
+    color: var(--red-color) !important;
+}
+
+.text-orange {
+    color: var(--orange-color) !important;
+}
+
+.text-peach {
+    color: var(--peach-color) !important;
+}
+
+.text-info-primary {
+    color: var(--info-primary-color) !important;
+}
+
+.text-urgent,
+.text-maroon {
+    color: var(--maroon-color) !important;
+}
+
+.text-pink {
+    color: var(--pink-color) !important;
+}
+
+.text-high,
+.text-hotPink {
+    color: var(--hotPink-color) !important;
+}
+
+.text-yellow {
+    color: var(--yellow-color) !important;
+}
+
+.text-orange {
+    color: var(--orange-color) !important;
+}
+
+.text-important,
+.text-mud {
+    color: var(--mud-color) !important;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.text-low,
+.text-success {
+    color: var(--success-color) !important;
+}
+
+.text-danger {
+    color: var(--danger-color) !important;
+}
+
+.text-info {
+    color: var(--info-color) !important;
+}
+
+.text-medium,
+.text-warning {
+    color: var(--warning-color) !important;
+}
+
+.text-light-primary {
+    color: var(--light-primary-color) !important;
+}
+
+.text-light-success {
+    color: var(--light-success-color) !important;
+}
+
+.text-light-danger {
+    color: var(--light-danger-color) !important;
+}
+
+.text-light-info {
+    color: var(--light-info-color) !important;
+}
+
+.text-light-warning {
+    color: var(--light-warning-color) !important;
+}
+
+.text-theme {
+    color: var(--theme-color) !important;
+}
+
+.bg-default {
+    background: var(--background-color) !important;
+}
+
+.bg-light {
+    background: var(--light-color) !important;
+}
+
+.bg-theme {
+    background: var(--theme-color) !important;
+}
+
+.bg-green {
+    background: var(--green-color) !important;
+}
+
+.bg-violet {
+    background: var(--violet-color) !important;
+}
+
+.bg-blue {
+    background: var(--blue-color) !important;
+}
+
+.bg-red {
+    background: var(--red-color) !important;
+}
+
+.bg-orange {
+    background: var(--orange-color) !important;
+}
+
+.bg-peach {
+    background: var(--peach-color) !important;
+}
+
+.bg-pink {
+    background: var(--pink-color) !important;
+}
+
+.bg-hotPink {
+    background: var(--hotPink-color) !important;
+}
+
+.bg-yellow {
+    background: var(--yellow-color) !important;
+}
+
+.bg-maroon {
+    background: var(--maroon-color) !important;
+}
+
+.bg-mud {
+    background: var(--mud-color) !important;
+}
+
+.bg-primary {
+    background: var(--primary-color) !important;
+}
+
+.bg-success {
+    background: var(--success-color) !important;
+}
+
+.bg-danger {
+    background: var(--danger-color) !important;
+}
+
+.bg-info {
+    background: var(--info-color) !important;
+}
+
+.bg-warning {
+    background: var(--warning-color) !important;
+}
+
+.bg-light-primary {
+    background: var(--light-primary-color) !important;
+}
+
+.bg-light-low,
+.bg-light-success {
+    background: var(--light-success-color) !important;
+}
+
+.bg-light-danger {
+    background: var(--light-danger-color) !important;
+}
+
+.bg-light-info {
+    background: var(--light-info-color) !important;
+}
+
+.bg-light-medium,
+.bg-light-warning {
+    background: var(--light-warning-color) !important;
+}
+
+.bg-light-theme {
+    background: var(--light-theme-color) !important;
+}
+
+.bg-light-red {
+    background: var(--light-red-color) !important;
+}
+
+.bg-light-orange {
+    background: var(--light-orange-color) !important;
+}
+
+.bg-light-pink {
+    background: var(--light-pink-color) !important;
+}
+
+.bg-light-high,
+.bg-light-hotPink {
+    background: var(--light-hotPink-color) !important;
+}
+
+.bg-light-green {
+    background: var(--light-green-color) !important;
+}
+
+.bg-light-blue {
+    background: var(--light-blue-color) !important;
+}
+
+.bg-light-violet {
+    background: var(--light-violet-color) !important;
+}
+
+.bg-light-peach {
+    background: var(--light-peach-color) !important;
+}
+
+.bg-light-yellow {
+    background: var(--light-yellow-color) !important;
+}
+
+.bg-light-urgent,
+.bg-light-maroon {
+    background: var(--light-maroon-color) !important;
+}
+
+.bg-light-important,
+.bg-light-mud {
+    background: var(--light-mud-color) !important;
+}

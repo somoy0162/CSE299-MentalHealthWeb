@@ -1,0 +1,32 @@
+export class ImahomeSheet {
+    ID: number;
+    SessionID: string;
+    Date: Date;
+    Time: string;
+    Duration: string;
+    Staff: string;
+    ClientID: number;
+    Client: string;
+    Program: string;
+    ProgramCode: string;
+    Referral: string;
+    SpecialProjectCode: string;
+    SignedByAuthor: boolean;
+    signedByClientGuardian: boolean;
+    SignedByCompleting: boolean;
+    SignedDate?: Date;
+    PaidDate?: Date;
+    NotSigned: boolean;
+    Before7AM: boolean;
+    After11PM: boolean;
+    SchoolHours: boolean;
+    ExceedingServiceLimit: boolean;
+    DailyService: boolean;
+    Over30Days: boolean;
+    NotPayable: boolean;
+    DaysBetweenServiceAndSigned?: number;
+    DoubleService: boolean;
+    NotImportedReason: string;
+    UniqueID: string;
+    ActivityCode: string;
+}
