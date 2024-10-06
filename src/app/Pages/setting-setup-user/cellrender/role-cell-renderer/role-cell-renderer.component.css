@@ -1,0 +1,41 @@
+.dropdown-menu.show {
+    display: block;
+}
+.custom-dropdown-menu {
+    padding: 10px;
+    width: 100%;
+}
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    font-size: var(--font-12);
+    margin: 0;
+    line-height: normal;
+    min-width: max-content;
+    max-height: 260px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.custom-dropdown-menu-list {
+    font-size: 11px;
+    background-color: #f5f5fa;
+    margin-top: 5px;
+    border-radius: 8px;
+    padding: 7px 15px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.agGridTopSearh .form-group .form-control {
+    padding-left: 30px;
+    height: 28px;
+    border-radius: 4px;
+    min-width: 200px;
+}
+
+.agGridTopSearh .form-group svg {
+    position: absolute;
+    left: 13px;
+    top: 9px;
+}

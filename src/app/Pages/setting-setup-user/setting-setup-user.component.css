@@ -1,0 +1,104 @@
+
+
+
+/* ::ng-deep .kjHousing-table-body .ag-theme-alpine {
+    height: calc(100vh - 240px) !important;
+
+} */
+.permission-body {
+    display: grid;
+    grid-template-columns: 30% auto;
+    height: 100%;
+}
+
+.permission-body-grid:not(:last-child) {
+    border-right: 1px solid var(--border-color);
+    
+}
+
+:host ::ng-deep app-ag-grid-layout .kjHousing-table {
+    padding: 5px 20px !important;
+}
+
+:host ::ng-deep app-ag-grid-layout .kjHousing-table .kjHousing-table-body ag-grid-angular.ag-theme-alpine {
+    height: calc(100vh - 250px) !important;
+}
+
+.form-group .form-label {
+    flex-shrink: 0;
+    flex: 0 0 40%;
+}
+
+select.form-select,
+input.form-control {
+    height: 30px;
+}
+
+.form-group .theme-outline-button {
+    padding: 4px 20px;
+}
+
+input.form-control[type='number'] {
+    max-width: 100%;
+}
+
+.bx-chevron-down {
+    font-size: 17px;
+    margin-left: -24px;
+    margin-top: 5px;
+    color: #7f7d7d;
+}
+
+.form-select {
+    width: 248px;
+}
+
+.dropdown-item.project {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item.project:hover {
+    background-color: #4fb03015;
+}
+
+.dropdown-item.project.selected {
+    background-color: var(--theme-color);
+    color: #fff;
+}
+
+.max-character {
+    position: absolute;
+    bottom: -14px;
+    right: 4px;
+    font-size: var(--font-9);
+}
+
+input.form-control{
+    height: 42px;
+}
+
+
+
+select.form-control:not([size]):not([multiple]) {
+    height: calc(2.25rem + 2px);
+    border: 1px solid var(--border-color);
+    
+}
+
+select.form-select {
+    height: 41px;
+  }
+  select.form-select {
+    border: 1px solid var(--border-color);
+    border-radius: 0;
+    font-size: var(--font-11);
+    height: 38px;
+    border-radius: 6px;
+    outline: none;
+    box-shadow: none !important;
+  }
+
+  input.form-control{
+    height: 41px;
+}

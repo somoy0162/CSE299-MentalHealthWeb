@@ -1,0 +1,67 @@
+/* subpage routing  */
+
+.subRoute-nav {
+    display: grid;
+    grid-template-columns: 17% auto;
+    height: 100%;
+}
+
+.subRoute-nav-menu {
+    margin: 0;
+    padding: 10px 0;
+    border-right: 1px solid var(--border-color);
+}
+
+.subRoute-nav-menu li {
+    list-style: none;
+    /* padding: 10px 30px; */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.subRoute-nav-menu li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: var(--weight-500);
+    transition: all 0.3s ease;
+    display: block;
+    width: 100%;
+    padding: 9px 30px;
+    font-size: var(--font-12);
+    font-weight: var(--weight-500);
+}
+
+.subRoute-nav-menu li:hover a {
+    color: var(--theme-color);
+}
+
+.subRoute-nav-menu li a.active {
+    background: #01acbb2e;
+    position: relative;
+}
+
+.subRoute-nav-menu li a.active::before {
+    content: '';
+    width: 4px;
+    height: 100%;
+    top: 0px;
+    right: 0;
+    border-radius: 0 6px 6px 0;
+    background: var(--theme-color);
+    position: absolute;
+    z-index: 1000;
+}
+
+.admin-setup-body {
+    padding: 10px 20px;
+}
+
+.dependentModalTempleteWidth {
+    max-width: 600px;
+}
+
+
+.crm-body-card {
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+}
