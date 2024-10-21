@@ -1,0 +1,101 @@
+[
+    {
+        "name": "PCA"
+    },
+    {
+        "name": "LPN"
+    },
+    {
+        "name": "ST"
+    },
+    {
+        "name": "HMK"
+    },
+    {
+        "name": "PA"
+    },
+    {
+        "name": "COMP"
+    },
+    {
+        "name": "SCI"
+    },
+    {
+        "name": "RESP"
+    },
+    {
+        "name": "CBSA"
+    },
+    {
+        "name": "PC"
+    },
+    {
+        "name": "SHHA"
+    },
+    {
+        "name": "HHA"
+    },
+    {
+        "name": "FT"
+    },
+    {
+        "name": "HSW"
+    },
+    {
+        "name": "NT"
+    },
+    {
+        "name": "HCSS"
+    },
+    {
+        "name": "APC"
+    },
+    {
+        "name": "ILST"
+    },
+    {
+        "name": "ESC"
+    },
+    {
+        "name": "Other(Non skilled)"
+    },
+    {
+        "name": "CH"
+    },
+    {
+        "name": "SHC"
+    },
+    {
+        "name": "RN"
+    },
+    {
+        "name": "OT"
+    },
+    {
+        "name": "HSK"
+    },
+    {
+        "name": "RT"
+    },
+    {
+        "name": "CNA"
+    },
+    {
+        "name": "SCH"
+    },
+    {
+        "name": "PBIS"
+    },
+    {
+        "name": "SOP"
+    },
+    {
+        "name": "Other(Skilled)"
+    },
+    {
+        "name": "SPC"
+    },
+    {
+        "name": "NINS"
+    }
+]

@@ -1,0 +1,60 @@
+.bs-datepicker-head {
+    background-color: var(--theme-color) !important;
+}
+
+.bs-datepicker-body table td.week span {
+    color: var(--theme-color) !important;
+}
+
+.bs-datepicker-buttons {
+    border: none;
+}
+
+.bs-datepicker-buttons .btn-clear-wrapper .btn-success {
+    background-color: var(--theme-color);
+    border-color: var(--theme-color);
+    font-size: var(--font-11);
+    padding: 3px 12px;
+}
+
+.bs-datepicker-buttons .btn-clear-wrapper .btn-success:hover {
+    background-color: var(--secondary-theme-color);
+    border-color: var(--secondary-theme-color);
+}
+
+.bs-datepicker-body table th {
+    font-size: var(--font-10);
+    color: var(--light-color);
+}
+
+.bs-datepicker-body table.days span {
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+}
+
+.bs-datepicker-body table td span {
+    font-size: var(--font-12);
+}
+
+.theme-green .bs-datepicker-body table td span.selected,
+.theme-green .bs-datepicker-body table td.selected span,
+.theme-green .bs-datepicker-body table td span[class*=select-]:after,
+.theme-green .bs-datepicker-body table td[class*=select-] span:after {
+    background-color: var(--theme-color) !important;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.bs-datepicker-body table td span {
+    margin: 2px auto;
+}
+
+.bs-datepicker-body table td:before,
+.bs-datepicker-body table td span:before {
+    left: -6px;
+}
+
+.bs-datepicker-body table.days span.in-range.select-end:before {
+    right: 10px;
+    left: -6px;
+}

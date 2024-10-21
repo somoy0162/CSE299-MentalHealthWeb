@@ -1,0 +1,83 @@
+@media only screen and (min-device-width: 1640px) and (max-device-width: 1800px) {
+    .department-body-content {
+        grid-template-columns: repeat(4, 220px) !important;
+        grid-column-gap: 22px !important;
+        grid-row-gap: 16px !important;
+    }
+
+}
+
+@media only screen and (max-device-width: 1750px) {
+    .gadget-card {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+
+    .gadget-card ul {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-device-width: 1366px) {
+    .sidebar {
+        width: 220px !important;
+    }
+    .header {
+        left: 220px !important;
+        width: calc(100vw - 220px) !important;
+    }
+
+    .main-content {
+        width: calc(100vw - 220px) !important;
+        left: 220px !important;
+    }
+
+    main {
+        padding: 10px 15px !important;
+    }
+
+    .admin-setup {
+        grid-template-columns: 20% auto;
+    }
+
+}
+
+@media only screen and (min-device-width: 1366px) and (max-device-width: 1640px) {
+    .department-body-content {
+        grid-template-columns: repeat(3, 250px) !important;
+        grid-column-gap: 22px !important;
+        grid-row-gap: 16px !important;
+    }
+}
+
+@media only screen and (min-device-width: 1200px) and (max-device-width: 1366px) {
+    .department-body-content {
+        grid-template-columns: repeat(3, 220px) !important;
+        grid-column-gap: 22px !important;
+        grid-row-gap: 16px !important;
+    }
+}
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1200px) {
+    .department-body-content {
+        grid-template-columns: repeat(2, 250px) !important;
+        grid-column-gap: 22px !important;
+        grid-row-gap: 16px !important;
+    }
+}
+
+@media only screen and (max-device-width: 768px) {
+    .sidebar {
+        width: 85px !important;
+    }
+
+    .sidebar .kj-menu-dropdown .drp-btn span,
+    .sidebar .menu-main a div {
+        display: none;
+    }
+
+    .main-content {
+        width: calc(100vw - 85px) !important;
+        left: 85px !important;
+    }
+}

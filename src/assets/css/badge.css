@@ -1,0 +1,297 @@
+.badge-theme {
+    background: var(--theme-color);
+    color: var(--text-white);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-departmet-theme {
+    background: #94DFDB;
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-light-theme {
+    background: var(--light-theme-color);
+    color: var(--theme-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+
+.badge-light-success {
+    background: var(--light-success-color);
+    color: var(--success-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-light-primary {
+    background: var(--light-primary-color);
+    color: var(--primary-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-light-warning {
+    background: var(--light-warning-color);
+    color: var(--warning-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-light-danger {
+    background: var(--light-danger-color);
+    color: var(--danger-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-light-info {
+    background: var(--light-info-color);
+    color: var(--info-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-primary {
+    background: var(--primary-color);
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-low,
+.badge-success {
+    background: var(--success-color);
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-medium,
+.badge-warning {
+    background: var(--warning-color);
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-danger {
+    background: var(--danger-color);
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+
+.badge-info {
+    background: var(--info-color);
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+
+.badge-green {
+    background: var(--green-color);
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-blue {
+    background: var(--blue-color);
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-pink {
+    background: var(--pink-color);
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-violet {
+    background: var(--violet-color);
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-red {
+    background: var(--red-color);
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-orange {
+    background: var(--orange-color);
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+
+.badge-peach {
+    background: var(--peach-color);
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+
+.badge-yellow {
+    background: var(--yellow-color);
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-urgent,
+.badge-maroon {
+    background: var(--maroon-color);
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-high,
+.badge-hotPink {
+    background: var(--hotPink-color);
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-important,
+.badge-mud {
+    background: var(--mud-color);
+    color: var(--text-color);
+    font-size: var(--font-10);
+    border-radius: 3px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+
+.badge-round {
+    border-radius: 20px;
+    padding: 2px 7px;
+    line-height: 13px;
+    width: fit-content;
+    white-space: nowrap;
+}
+
+.badge-round.none {
+    color: var(--border-color) !important;
+}
+
+.kjHousing-badge {
+    background: var(--background-color);
+    color: var(--text-color);
+    font-size: var(--font-11);
+    max-width: 120px;
+    border-radius: 4px;
+    padding: 3px 10px;
+    line-height: normal;
+    font-weight: var(--weight-400);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.system-user-badge {
+    border-radius: 5px;
+    padding: 3px 8px;
+    border: 2px solid var(--light-border-color);
+}
+
+.badge-low,
+.badge-medium,
+.badge-high,
+.badge-urgent,
+.badge-important {
+    text-transform: capitalize;
+    font-size: var(--font-10);
+    color: var(--text-white);
+    font-weight: 400;
+}
+
+.department-badge {
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    font-size: var(--front-11);
+    border-radius: 4px;
+    width: fit-content;
+    padding: 3px 10px;
+    transition: all 0.3s ease;
+}
+
+.contact-badge {
+    border: 1px solid var(--light-border-color);
+    background: var(--light-border-color);
+    color: var(--text-color);
+    font-size: var(--front-11);
+    border-radius: 4px;
+    width: fit-content;
+    padding: 3px 10px;
+    transition: all 0.3s ease;
+}
+
+.department-badge.active {
+    border-color: var(--theme-color);
+}
+
+.department-badge .form-check {
+    min-height: auto;
+}

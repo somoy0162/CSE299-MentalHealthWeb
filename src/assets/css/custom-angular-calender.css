@@ -1,0 +1,90 @@
+/* angular calender custome css */
+.cal-month-view .cal-header .cal-cell {
+    padding: 12px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+    color: var(--text-light-color);
+    font-weight: 500;
+    font-size: var(--font-11);
+    background: #f5f5f5 !important;
+    border: 1px solid #f5f5f5;
+}
+
+.cal-month-view .cal-day-cell {
+    height: 115px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* 
+.cal-month-view .cal-cell-row .cal-cell:hover,
+.cal-month-view .cal-cell.cal-has-events.cal-open {
+    background-color: #f5f5f5;
+} */
+
+.cal-month-view .cal-day-number {
+    font-size: var(--font-12);
+    font-weight: var(--weight-500);
+    color: var(--text-color);
+    letter-spacing: 1px;
+    opacity: 1;
+}
+
+
+.cal-month-view .cal-day-cell:not(:last-child) {
+    border-right-color: #dedede !important;
+}
+
+.cal-month-view .cal-days .cal-cell-row {
+    border-bottom-color: #dedede !important;
+}
+
+.cal-month-view .cal-days {
+    border-color: #dedede !important;
+    border-top-color: #dedede91 !important;
+}
+
+.cal-week-view .cal-header.cal-weekend span,
+.cal-month-view .cal-day-cell.cal-weekend .cal-day-number {
+    color: var(--danger-color);
+}
+
+.cal-month-view .cal-day-cell.cal-today .cal-day-number {
+    font-size: var(--font-18);
+    font-weight: var(--weight-600);
+}
+
+.cal-month-view .cal-day-cell.cal-out-month .cal-day-number {
+    opacity: 0.2;
+}
+
+.cal-month-view .cal-cell-top {
+    position: relative;
+}
+
+.cal-week-view .cal-day-headers {
+    background: #f5f5f5;
+}
+
+.cal-week-view .cal-day-headers .cal-header {
+    background: #f5f5f5 !important;
+    font-size: var(--font-11);
+    color: var(--text-light-color);
+}
+
+.cal-week-view .cal-day-headers .cal-header b {
+    font-weight: var(--weight-500) !important;
+}
+
+.cal-week-view .cal-day-headers span {
+    font-weight: var(--weight-500);
+    color: var(--text-color);
+    opacity: 1;
+}
+
+.cal-week-view .cal-time {
+    font-size: var(--font-11);
+    font-weight: var(--weight-600);
+}

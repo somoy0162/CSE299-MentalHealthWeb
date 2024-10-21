@@ -1,0 +1,133 @@
+.custom-dropdown {
+    width: 100%;
+}
+
+.dropdown-menu {
+    width: 100%;
+    /* min-width: 190px; */
+    border-width: 0;
+    max-height: inherit;
+    overflow-y: auto;
+}
+
+.table-responsive {
+    height: 250px;
+}
+
+/* .custom-dropdown-title {
+    font-size: 12px;
+    background-color: white;
+    border-color: var(--border-color);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 6px 25px 6px 10px;
+    background-image: url(/media/arrow-down.svg) !important;
+    background-size: auto !important;
+    background-repeat: no-repeat;
+    background-position: right .5rem center;
+    min-width: 100px;
+    width: 100%;
+    text-align: left;
+} */
+.custom-dropdown-title{
+    font-size: 12px;
+    background-color: white;
+    border-color: var(--border-color);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 2px 25px 6px 10px;
+    background-image: url(/media/arrow-down.svg) !important;
+    background-size: auto !important;
+    background-repeat: no-repeat;
+    background-position: right .5rem center;
+    min-width: 100px;
+    width: 100%;
+    text-align: left;
+    margin-top: 1px;
+}
+
+
+.custom-dropdown-title:hover {
+    outline: none;
+}
+
+.custom-dropdown-menu {
+    padding: 3px 13px;
+}
+
+.modal-footer {
+    padding: 5px 0;
+    background: #f7f7f7;
+}
+
+.form-check {
+    padding: 0;
+}
+
+.check-label {
+    font-size: 11px;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.check-label:hover {
+    color: var(--theme-color);
+}
+
+.hih-dropdown-table {
+    width: 100%;
+}
+
+.hih-dropdown-table thead th {
+    vertical-align: middle;
+}
+
+.hih-dropdown-table thead th:first-child {
+    width: 5%;
+}
+
+.form-check {
+    min-height: inherit;
+}
+
+input.form-control {
+    height: auto;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.custom-dropdown-menu {
+    max-height: 300px;
+    height: 100%;
+}
+
+dl,
+ol,
+ul {
+    margin-top: 0;
+    margin-bottom: -3px;
+}
+
+ul li.single {
+    background: #f3f3f3;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+ul li.single:not(:last-child) {
+    margin-bottom: 2px;
+}
+
+ul li.multi table tbody tr {
+    background: none;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+ul li.multi table tbody tr:not(:last-child) {
+    border-bottom: 1px dashed #dadada;
+}

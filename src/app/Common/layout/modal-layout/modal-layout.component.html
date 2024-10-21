@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <span class="modal-title">{{title}}</span>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="onAction.emit()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <ng-content></ng-content>
+</div>
+<div class="modal-footer gap-2">
+    <button type="button" [class]="action.className" [disabled]="action.disabled" *ngFor="let action of objAction"
+        (click)="onAction.emit(action.name)">
+        {{action.name}}
+    </button>
+</div>
