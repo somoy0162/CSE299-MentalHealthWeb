@@ -1,0 +1,21 @@
+<div class="card crm-body-card height-100p">
+	<div class="subRoute-nav">
+		<ul class="subRoute-nav-menu">
+			<li>
+				<a [routerLink]="'user'" routerLinkActive="active">Users</a>
+			</li>
+			<li>
+				<a [routerLink]="'permission'" routerLinkActive="active">Role and permission</a>
+			</li>
+		</ul>
+		<div class="admin-setup-body">
+			<div class="admin-setup-body-header">
+				<span class="font-13 weight-600"></span>
+			</div>
+			<div class="admin-setup-body-content">
+				<router-outlet />
+			</div>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,134 @@
+<div class="permission-body mt-2">
+	<div class="permission-body-grid">
+		<div class="role-body">
+			<h5 class="weight-600 font-12">Role</h5>
+			<span class="text-color font-11 weight-500">People can have access with full control or partial control.
+				Everyone who works on your company</span>
+			<ul class="role-body-content mt-3">
+				<li *ngFor="let role of roles; let i = index" class="role-item"
+					[class.active]="role.RoleID==selectedRole.RoleID">
+					<div class="d-flex flex-column" (click)="clickToSelectRole(role)">
+						<span class="role-item-name weight-500 font-14">{{ role.RoleName }}</span>
+						<span class="role-item-text text  font-12 weight-400 mt-1">{{ role.Description }}</span>
+					</div>
+				</li>
+
+				<!-- <button type="button" class="action-button edit" (click)="editRole(role)">
+						<svg xmlns="http://www.w3.org/2000/svg" width="11.392" height="11.291"
+							viewBox="0 0 11.392 11.291">
+							<g id="Icon_feather-edit" data-name="Icon feather-edit" transform="translate(0.6 0.6)">
+								<path id="Path_652" data-name="Path 652"
+									d="M7.513,6H4A1,1,0,0,0,3,7v7.021a1,1,0,0,0,1,1h7.021a1,1,0,0,0,1-1V10.514"
+									transform="translate(-3 -4.936)" fill="none" stroke="#e0e0e0"
+									stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+								<path id="Path_653" data-name="Path 653"
+									d="M17.266,3.13a1.064,1.064,0,0,1,1.5,1.5L14.006,9.4,12,9.9l.5-2.006Z"
+									transform="translate(-8.991 -2.818)" fill="none" stroke="#e0e0e0"
+									stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+							</g>
+						</svg>
+					</button>
+					<button type="button" class="action-button delete" (click)="deleteRole(role)">
+						<svg xmlns="http://www.w3.org/2000/svg" width="11.331" height="12.597"
+							viewBox="0 0 11.331 12.597">
+							<path id="Path_654" data-name="Path 654"
+								d="M13.5,5.533l-.549,7.688A1.266,1.266,0,0,1,11.686,14.4H6.445a1.266,1.266,0,0,1-1.263-1.177L4.633,5.533M7.8,8.066v3.8m2.533-3.8v3.8m.633-6.332v-1.9A.633.633,0,0,0,10.332,3H7.8a.633.633,0,0,0-.633.633v1.9M4,5.533H14.131"
+								transform="translate(-3.4 -2.4)" fill="none" stroke="#e0e0e0" stroke-linecap="round"
+								stroke-linejoin="round" stroke-width="1.2" />
+						</svg>
+					</button> -->
+			</ul>
+			<div class="border-bottom"></div>
+			<!-- <div class="role-link">
+				<a class="theme-link" (click)="openRoleForm()">+ Add new role</a>
+			</div> -->
+		</div>
+	</div>
+
+	<div class="permission-body-grid px-3">
+		<span class="permission weight-600 font-12">Permissions</span>
+		<div class="row  mt-2">
+			<div class="col-md-6">
+				<ul class="permission-ul action">
+					<li class="form-toggle" *ngFor="let permission of permissions">
+						<div *ngIf="!(permission.PermissionName === 'login' && selectedRole.RoleName !== 'Admin')">
+							<div class="d-flex align-items-center justify-content-between">
+								<div class="d-flex align-items-center gap-1">
+									<div class="toggle__label d-flex align-items-center gap-1">
+										<span *ngIf="permission.Actions!.length > 0" class="have-action"
+											[class.rotate]="permission.IsShowActions"
+											(click)="permission.IsShowActions = !permission.IsShowActions">
+											<i class='bx bx-chevron-right font-16'></i>
+										</span>
+										<span class="permission_display weight-500 font-11"
+											(click)="isSuperAdmin ? editPermission(permission) : ''">{{permission.DisplayName}}</span>
+									</div>
+								</div>
+								<div class="d-flex align-items-center gap-2">
+									<!-- <span *ngIf="isSuperAdmin" class="clear-button" tooltip="Remove Permission"
+										containerClass="tooltipClass" container="body" placement="top"
+										(click)="deletePermission(permission)">
+										<i class='bx bxs-x-circle font-16'></i>
+									</span> -->
+									<label class="toggle" for="checkPerm_{{permission.PermissionID}}">
+										<input class="toggle__checkbox" id="checkPerm_{{permission.PermissionID}}"
+											(ngModelChange)="udpatePermission(permission.PermissionID, $event)"
+											type="checkbox" [(ngModel)]="permission.IsChecked">
+										<span class="toggle__switch"></span>
+									</label>
+								</div>
+
+							</div>
+							<ul class="permission-li"
+								*ngIf="permission.Actions!.length > 0 && permission.IsShowActions">
+								<li class="form-toggle" *ngFor="let action of permission.Actions">
+									<div class="d-flex align-items-center justify-content-between">
+										<div class="d-flex align-items-center gap-1">
+											<span *ngIf="isSuperAdmin" class="clear-button" tooltip="Remove Action"
+												containerClass="tooltipClass" container="body" placement="top"
+												(click)="deleteAction(action)">
+												<i class='bx bxs-x-circle font-16'></i>
+											</span>
+											<span class="toggle__label action weight-500 font-10"
+												(click)="isSuperAdmin ? editAction(action) : ''">{{action.DisplayName}}</span>
+										</div>
+										<label class="toggle" for="checkAct_{{action.ActionID}}">
+											<input class="toggle__checkbox" id="checkAct_{{action.ActionID}}"
+												[(ngModel)]="action.IsChecked"
+												(ngModelChange)="updateAction(action.ActionID, action.PermissionID, $event)"
+												type="checkbox">
+											<span class="toggle__switch"></span>
+										</label>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- role add and edit modal -->
+<ng-template #roleModal>
+	<app-modal-layout [title]="modalTitle"
+		[objAction]="[
+		{ name: 'Cancel', className: 'modal-cancel-button' }, 
+		{ name: modalButtonText , className: 'theme-button', disabled: !roleForm.form.valid || (dataService.destroyForm | async) }]"
+		(onAction)="onActionRoleForm($event)">
+		<form #roleForm="ngForm">
+			<div class="form-group">
+				<label for="roleName" class="form-label">Role Name</label>
+				<input type="text" id="roleName" class="form-control" name="roleName" [(ngModel)]="objRole.RoleName"
+					required #roleName="ngModel" placeholder="Enter role name" autocomplete="off">
+				<div *ngIf="roleName.errors && (roleName.dirty || roleForm.submitted) && roleName.invalid"
+					class="invalid-feedback">
+					<div *ngIf="roleName.errors['required']">Role name is required</div>
+				</div>
+			</div>
+		</form>
+	</app-modal-layout>
+</ng-template>
