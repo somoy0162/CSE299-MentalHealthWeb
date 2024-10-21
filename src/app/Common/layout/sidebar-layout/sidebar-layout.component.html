@@ -1,0 +1,79 @@
+<div [class.hambargerCollapse]="sidehamberger">
+	<div class="sidebar" [class.sidebarCollapse]="sidebarToggle">
+		<div class="main-logo">
+			 <h5 class=" center font-17">Counseling Center</h5>
+		</div>
+		<div class="menu">
+			<ul class="menu-main">
+				<li class="menu-item" *ngIf="isPermited('dashboard')">
+					<a class="d-flex align-items-center gap-3" [routerLink]="'dashboard'" routerLinkActive="active">
+						Dashboard
+					</a>
+				</li>
+				<li class="menu-item" *ngIf="isPermited('appointment-booking')">
+					<a class="d-flex align-items-center gap-3" [routerLink]="'appointment-booking'" routerLinkActive="active">
+						Appointment Booking
+					</a>
+				</li>
+				<li class="menu-item" *ngIf="isPermited('account-manager')">
+					<a class="d-flex align-items-center gap-3" [routerLink]="'account-manager'" routerLinkActive="active">
+						Account Manager
+					</a>
+				</li>
+				<li class="menu-item" *ngIf="isPermited('counselor-directory')">
+					<a class="d-flex align-items-center gap-3" [routerLink]="'counselor-directory'" routerLinkActive="active">
+						Counselor Directory
+					</a>
+				</li>
+				<li class="menu-item" *ngIf="isPermited('session-history')">
+					<a class="d-flex align-items-center gap-3" [routerLink]="'session-history'" routerLinkActive="active">
+						Session History
+					</a>
+				</li>
+				<li class="menu-item" *ngIf="isPermited('resource-library')">
+					<a class="d-flex align-items-center gap-3" [routerLink]="'resource-library'" routerLinkActive="active">
+						Resource Library
+					</a>
+				</li>
+				<li class="menu-item" *ngIf="isPermited('feedback-rating')">
+					<a class="d-flex align-items-center gap-3" [routerLink]="'feedback-rating'" routerLinkActive="active">
+						Feedback and Rating
+					</a>
+				</li>
+				<li class="menu-item" *ngIf="isPermited('emergency-assistance')">
+					<a class="d-flex align-items-center gap-3" [routerLink]="'emergency-assistance'" routerLinkActive="active">
+						Emergency Assistance
+					</a>
+				</li>
+				<li class="menu-item" *ngIf="isPermited('settings')">
+					<a class="d-flex align-items-center gap-3" [routerLink]="'settings'" routerLinkActive="active">
+						Settings
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="dropdown profile-box-drop" dropdown>
+			<div dropdownToggle id="profileBox-dropUp"
+				class="profile-box d-flex align-items-center justify-content-between" aria-controls="dropdown-dropup">
+				<div class="profile-box-item d-flex align-items-center justify-content-between gap-1">
+					<div class="profile-img">
+						<span class="profile-img-txt">{{profileImgText}}</span>
+					</div>
+					<div class="profile-info d-flex flex-column">
+						<span class="font-12 weight-600">{{profileUserName}}</span>
+						<span class="font-10 weight-300 user">Switch user</span>
+					</div>
+					<i class="bx bx-chevron-down font-18 text-menu weight-300 mb-3 ml-4" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown($event)"></i>
+				</div>
+				<div class="dropdown-menu">
+					<span class="logout" (click)="logout()">
+						Logout
+						<i class='bx bx-log-out bx-rotate-180 font-15'></i>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

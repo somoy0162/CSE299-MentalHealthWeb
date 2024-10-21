@@ -1,0 +1,74 @@
+<div class="authentiaction-content">
+    <div class="card authentication-card">
+        <div class="logo-image">
+            <h1 class="logo">Counseling Center</h1>
+        </div>
+        <div class="authentication-form width-100p ">
+            <form name="loginForm" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()" novalidate>
+                <div class="form-group">
+                    <label for="userName" class="form-label">Username</label>
+                    <input type="text" class="form-control mt-2" name="userName" id="userName"
+                        placeholder="Enter user name" [(ngModel)]="objVmLogin.UserName" required #userName="ngModel"
+                        autocomplete="off" [class.is-invalid]="f.submitted && userName.errors">
+                    <div *ngIf="f.submitted && userName.errors" class="invalid-feedback">
+                        <div *ngIf="userName.errors['required']">Username is required</div>
+                    </div>
+                </div>
+                <div class="form-group mt-1">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="form-password">
+                        <input [type]="isShowPassword ? 'text' : 'password'" class="form-control mt-2" name="password"
+                            id="password" placeholder="Enter password" [(ngModel)]="objVmLogin.Password" required
+                            autocomplete="off" #password="ngModel" [class.is-invalid]="f.submitted && password.errors">
+                        <svg *ngIf="!isShowPassword" (click)="isShowPassword = !isShowPassword"
+                            xmlns="http://www.w3.org/2000/svg" width="13.701" height="13.701"
+                            viewBox="0 0 13.701 13.701">
+                            <g id="Icon_feather-eye-off" data-name="Icon feather-eye-off"
+                                transform="translate(0.849 0.849)">
+                                <path id="Path_5704" data-name="Path 5704"
+                                    d="M10.743,13.606A5.5,5.5,0,0,1,7.5,14.73c-3.819,0-6-4.365-6-4.365A10.067,10.067,0,0,1,4.261,7.124m2.1-.993A4.976,4.976,0,0,1,7.5,6c3.819,0,6,4.365,6,4.365a10.094,10.094,0,0,1-1.179,1.741m-3.667-.584A1.637,1.637,0,1,1,6.345,9.208"
+                                    transform="translate(-1.5 -4.363)" fill="none" stroke="#888" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="1.2" />
+                                <path id="Path_5705" data-name="Path 5705" d="M1.5,1.5l12,12"
+                                    transform="translate(-1.5 -1.5)" fill="none" stroke="#888" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="1.2" />
+                            </g>
+                        </svg>
+                        <svg class="show-pass" *ngIf="isShowPassword" (click)="isShowPassword = !isShowPassword"
+                            xmlns="http://www.w3.org/2000/svg" width="13.204" height="9.93" viewBox="0 0 13.204 9.93">
+                            <g id="Icon_feather-eye" data-name="Icon feather-eye" transform="translate(0.6 0.601)">
+                                <path id="Path_5706" data-name="Path 5706"
+                                    d="M1.5,10.365S3.683,6,7.5,6s6,4.365,6,4.365-2.183,4.365-6,4.365S1.5,10.365,1.5,10.365Z"
+                                    transform="translate(-1.5 -6.001)" fill="none" stroke="#888" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="1.2" />
+                                <path id="Path_5707" data-name="Path 5707"
+                                    d="M16.774,15.137A1.637,1.637,0,1,1,15.137,13.5,1.637,1.637,0,0,1,16.774,15.137Z"
+                                    transform="translate(-9.135 -10.773)" fill="none" stroke="#888"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+                            </g>
+                        </svg>
+                        <div *ngIf="f.submitted && password.errors" class="invalid-feedback">
+                            <div *ngIf="password.errors['required']">Password is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-part d-flex align-items-center justify-content-between">
+                    <div class="form-check">
+                        <input type="checkbox" id="remindMe" name="remindMe" [(ngModel)]="isRemindMeChecked"
+                            (change)="checkRemindMe()">
+                        <label for="remindMe" class="check-label">Remember me</label>
+                    </div>
+                    <a [routerLink]="['/forgot-password']" class="theme-link">Forgot password?</a>
+                </div>
+                <button type="submit" class="authentication-button mt-3" [disabled]="isLoading">
+                    Login
+                    <i *ngIf="isLoading" class="fa fa-spinner fa-spin text-white"></i>
+                </button>
+            </form>
+            <div class="d-flex align-items-center justify-content-center gap-2 mt-2" *ngIf="isRegisterPermitted">
+                <span class="font-11">Don't have an account?</span>
+                <a class="theme-link  weight-400" [routerLink]="['/register']">Register now</a>
+            </div>
+        </div>
+    </div>
+</div>

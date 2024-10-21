@@ -1,0 +1,599 @@
+<div class="kjHousing-table">
+  <div class="kjHousing-table-top  search d-flex align-items-center justify-content-between"
+    [class.kjHousing-table-top-filter]="filteredCols!.length">
+    @if (hideSearch) {
+    <div class="kjHousing-table-search  d-flex align-items-center flex-fill gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="10.303" height="10.303" viewBox="0 0 10.303 10.303">
+        <g id="Icon_feather-search" data-name="Icon feather-search" transform="translate(0.5 0.5)">
+          <path id="Path_298" data-name="Path 298"
+            d="M12.586,8.543A4.043,4.043,0,1,1,8.543,4.5a4.043,4.043,0,0,1,4.043,4.043Z"
+            transform="translate(-4.5 -4.5)" fill="none" stroke="#bababa" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="1" />
+          <path id="Path_299" data-name="Path 299" d="M27.173,27.173l-2.2-2.2" transform="translate(-18.077 -18.077)"
+            fill="none" stroke="#bababa" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+        </g>
+      </svg>
+      <input type="text" id="searchText" class="width-100p" [(ngModel)]="searchText" name="searchText"
+        placeholder="Search" autocomplete="off">
+    </div>
+    }
+
+    <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center gap-2 next-prev-wrap me-1">
+        <button *ngIf="!hiderefresh" type="button" class="theme-outline-button" (click)="refresh()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="10.566" height="8.523" viewBox="0 0 10.566 8.523">
+            <g id="Icon_feather-refresh-cw" data-name="Icon feather-refresh-cw" transform="translate(-0.793 -3.985)">
+              <path id="Path_13686" data-name="Path 13686" d="M28,6V8.5H25.5" transform="translate(-17.344 -1.082)"
+                fill="none" stroke="#4da0a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+              <path id="Path_13687" data-name="Path 13687" d="M1.5,23.5V21H4" transform="translate(0 -11.921)"
+                fill="none" stroke="#4da0a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+              <path id="Path_13688" data-name="Path 13688" d="M2.544,7A3.744,3.744,0,0,1,8.722,5.6l1.93,1.814M1.5,
+                      9.079l1.93,1.814a3.744,3.744,0,0,0,6.178-1.4" fill="none" stroke="#4da0a5" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="1" />
+            </g>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="btn-group buttons" #dropdown="bs-dropdown" [insideClick]="true" dropdown>
+      <button *ngIf="!hideLayout" id="button-basic" dropdownToggle type="button" class="theme-outline-button "
+        aria-controls="dropdown-basic" (click)="onClickViews()">
+        Views
+      </button>
+      <div id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+        <div class=" mt-2 mb-2 w-100">
+          <form>
+            <div class="form-group viewname">
+              <label for="layout" class="form-label font-12 weight-500"> Save New View</label>
+              <input name="view_" type="email" class="form-control w-100" placeholder="Enter view name"
+                [(ngModel)]="viewName">
+              <div class="modal-footers gap-2 d-flex align-items-end ">
+                <button type="button" class="theme-outline-button" (click)="dropdown?.hide()">
+                  Cancel
+                </button>
+                <button type="button" class="theme-outline-button" (click)="saveCustomView(dropdown)">
+                  Save
+                </button>
+              </div>
+            </div>
+            <div class="d-flex mt-6 gap-2 align-items-center w-100">
+              <div class="w-100 font-11 weight-500">
+                Saved views
+              </div>
+              <hr class=" saved w-100">
+            </div>
+            <div class="kjHousing-table-top  search d-flex align-items-center justify-content-between">
+              <div class="kjHousing-table-search1 d-flex align-items-center flex-fill gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10.303" height="10.303" viewBox="0 0 10.303 10.303">
+                  <g id="Icon_feather-search" data-name="Icon feather-search" transform="translate(0.5 0.5)">
+                    <path id="Path_298" data-name="Path 298"
+                      d="M12.586,8.543A4.043,4.043,0,1,1,8.543,4.5a4.043,4.043,0,0,1,4.043,4.043Z"
+                      transform="translate(-4.5 -4.5)" fill="none" stroke="#bababa" stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="1" />
+                    <path id="Path_299" data-name="Path 299" d="M27.173,27.173l-2.2-2.2"
+                      transform="translate(-18.077 -18.077)" fill="none" stroke="#bababa" stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="1" />
+                  </g>
+                </svg>
+                <input type="text" id="searchText" class="width-100p" name="searchText" placeholder="Search"
+                  autocomplete="off" [(ngModel)]="viewSearchText" (ngModelChange)="onSearch()">
+              </div>
+            </div>
+
+            <div class="scrollauto ms-1">
+              <div class="mt-1 viewnames" *ngFor="let view of views; let i = index">
+                <div class="view">
+                  <label [for]="'viewName_' + i" class="form-label" (click)="applyView(view)">{{view.ViewName}}</label>
+                  <div class="d-flex justify-content-between ">
+                    <div class="crm-gadgets-arrow-inner text-center d-flex ">
+                      <div class="form-toggle">
+                        <label class="toggle">
+                          <input class="toggle__checkbox" type="checkbox" [id]="'defaultView_'+i"
+                            [name]="'defaultView_'+i" (ngModelChange)="onToggle($event, i)"
+                            [(ngModel)]="view.DefaultView">
+                          <span class="toggle__switch"></span>
+                        </label>
+                      </div>
+                      <i class='bx'></i>
+                    </div>
+                  </div>
+                  <button type="button" class="action-button delete" (click)="onDeleteView(dropdown, view)" tooltip="Delete"
+                    containerClass="tooltipClass" container="body" placement="top">
+                    <svg class="width-75p" xmlns="http://www.w3.org/2000/svg" style="fill: gray;" width="10.831"
+                      height="16.497" viewBox="0 0 14.831 16.497">
+                      <path id="Path_654" data-name="Path 654"
+                        d="M16.5,6.333l-.722,10.116A1.666,1.666,0,0,1,14.113,18h-6.9a1.666,1.666,0,0,1-1.662-1.548L4.833,6.333M9,9.665v5m3.333-5v5m.833-8.332v-2.5A.833.833,0,0,0,12.332,3H9a.833.833,0,0,0-.833.833v2.5M4,6.333H17.331"
+                        transform="translate(-3.25 -2.25)" fill="none" stroke="#FC4D1E" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="1.5" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <div class="d-flex align-items-center undo  gap-2">
+            <button type="button"  class="theme-outline-button1 ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13.995" height="14.102" viewBox="0 0 13.995 14.102">
+                    <path id="undo-line"
+                        d="M12.439,7.534h-6.5L8.717,4.787A.506.506,0,1,0,8,4.072L4,8.029l4,3.937a.5.5,0,1,0,.705-.71L5.931,8.534h6.5a4.484,4.484,0,0,1,2.066,8.5.521.521,0,1,0,.47.93A5.5,5.5,0,0,0,12.439,7.554Z"
+                        transform="translate(-4 -3.924)" fill="#4da0a5" />
+                </svg>
+            </button>
+            <button  type="button" class="theme-outline-button1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13.995" height="14.102" viewBox="0 0 13.995 14.102">
+                    <path id="undo-line"
+                        d="M9.556,7.534h6.5L13.278,4.787a.506.506,0,1,1,.715-.715l4,3.957-4,3.937a.5.5,0,1,1-.705-.71l2.776-2.721h-6.5a4.484,4.484,0,0,0-2.066,8.5.521.521,0,1,1-.47.93A5.5,5.5,0,0,1,9.556,7.554Z"
+                        transform="translate(-4 -3.924)" fill="#4da0a5" />
+                </svg>
+            </button>
+          </div>
+         <span class="dash">|</span> -->
+    <div class="buttons d-flex align-items-center gap-2">
+      <!-- @if (isHistory) {
+            <button type="button" class="theme-outline-button" *ngIf="isHistory" (click)="onAction.emit('History')">
+                <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="10.011" height="8.581"
+                    viewBox="0 0 10.011 8.581">
+                    <path id="Icon_material-history" data-name="Icon material-history"
+                        d="M7.221,4.5A4.291,4.291,0,0,0,2.93,8.791H1.5l1.854,1.854.033.067L5.314,8.791H3.884a3.353,3.353,0,1,1,.982,2.355l-.677.677A4.289,4.289,0,1,0,7.221,4.5ZM6.744,6.884V9.267l2.04,1.211L9.128,9.9,7.459,8.91V6.884Z"
+                        transform="translate(-1.5 -4.5)" fill="#4da0a5" />
+                </svg>
+                History
+            </button>
+            } -->
+
+      <!-- @if (IsSettingShow) {
+            <button type="button" class="theme-outline-button" id="button-basic" dropdownToggle
+                aria-controls="dropdown-basic" data-toggle="tooltip" data-placement="top"
+                title="view already saved column states">
+                <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="9.764" height="9.764"
+                    viewBox="0 0 9.764 9.764">
+                    <g id="Icon_feather-settings" data-name="Icon feather-settings" transform="translate(-1.15 -1.15)">
+                        <path id="Path_13663" data-name="Path 13663"
+                            d="M15.972,14.736A1.236,1.236,0,1,1,14.736,13.5,1.236,1.236,0,0,1,15.972,14.736Z"
+                            transform="translate(-8.704 -8.704)" fill="none" stroke="#4da0a5" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="0.7" />
+                        <path id="Path_13664" data-name="Path 13664"
+                            d="M9.081,7.268a.68.68,0,0,0,.136.75l.025.025A.824.824,0,1,1,8.076,9.209l-.025-.025a.685.685,0,0,0-1.162.486v.07a.824.824,0,0,1-1.648,0V9.7a.713.713,0,0,0-1.195-.486l-.025.025A.824.824,0,1,1,2.856,8.076l.025-.025a.685.685,0,0,0-.486-1.162h-.07a.824.824,0,1,1,0-1.648h.037a.713.713,0,0,0,.486-1.195l-.025-.025A.824.824,0,1,1,3.989,2.856l.025.025a.68.68,0,0,0,.75.136H4.8a.68.68,0,0,0,.412-.622v-.07a.824.824,0,0,1,1.648,0v.037a.685.685,0,0,0,1.162.486l.025-.025A.824.824,0,1,1,9.209,3.989l-.025.025a.68.68,0,0,0-.136.75V4.8a.68.68,0,0,0,.622.412h.07a.824.824,0,0,1,0,1.648H9.7a.68.68,0,0,0-.622.412Z"
+                            transform="translate(0 0)" fill="none" stroke="#4da0a5" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="0.7" />
+                    </g>
+                </svg>
+                Setting
+            </button>
+            } -->
+
+
+      <!-- @if (saveFilters) {
+      <button type="button" class="theme-outline-button" id="button-basic" dropdownToggle aria-controls="dropdown-basic"
+        data-toggle="tooltip" data-placement="top" title="view already saved column states">
+        <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="9.363" height="8.527" viewBox="0 0 9.363 8.527">
+          <g id="layout-three-columns" transform="translate(0.5 -1.75)">
+            <path id="Icon_feather-filter" data-name="Icon feather-filter"
+              d="M11.363,4.5H3L6.345,8.456v2.735l1.673.836V8.456Z" transform="translate(-3 -2.25)" fill="none"
+              stroke="#03abbb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+          </g>
+        </svg>
+        Filter
+      </button>
+      }
+
+      @if (saveFilters) {
+      <button type="button" class="theme-outline-button" id="button-basic" dropdownToggle aria-controls="dropdown-basic"
+        data-toggle="tooltip" data-placement="top" title="view already saved column states">
+        <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="9.071" height="8" viewBox="0 0 9.071 8">
+          <g id="layout-three-columns" transform="translate(0.25 -2)">
+            <path id="Path_13659" data-name="Path 13659"
+              d="M0,3.054a.8.8,0,0,1,.8-.8H7.768a.8.8,0,0,1,.8.8V8.946a.8.8,0,0,1-.8.8H.8a.8.8,0,0,1-.8-.8Zm.8-.268a.268.268,0,0,0-.268.268V8.946A.268.268,0,0,0,.8,9.214H7.768a.268.268,0,0,0,.268-.268V3.054a.268.268,0,0,0-.268-.268Z"
+              fill="#4da0a5" stroke="#03abbb" stroke-width="0.5" fill-rule="evenodd" />
+            <path id="Path_13660" data-name="Path 13660" d="M11.25,9.75V2.25h.536v7.5Zm2.679,0V2.25h.536v7.5Z"
+              transform="translate(-8.571)" fill="#4da0a5" stroke="#03abbb" stroke-width="0.5" fill-rule="evenodd" />
+          </g>
+        </svg>
+        Layout
+      </button>
+      } -->
+
+      <div class="btn-group buttons d-flex justify-content-between gap-3" [insideClick]="true" dropdown>
+        <button *ngIf="!hideImport" (click)="onAction.emit('import')" type="button" class="theme-outline-button "
+          id="button-basic" dropdownToggle data-placement="top" title="view already saved column states">
+
+
+          <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="7.621" height="8" viewBox="0 0 7.621 8">
+            <path id="import"
+              d="M10.287,7.47l1.544-1.3.673.566L9.81,9,7.116,6.739l.673-.566,1.545,1.3V3h.953ZM6,8.6h.953v1.6h5.716V8.6h.953v1.6a.889.889,0,0,1-.953.8H6.953A.907.907,0,0,1,6,10.2Z"
+              transform="translate(-6 -3)" fill="#03abbb" fill-rule="evenodd" />
+          </svg>
+          Import
+          <i *ngIf="isLoading" class="fa fa-spinner fa-spin text-white"></i>
+
+        </button>
+
+      </div>
+
+
+
+      <!-- 
+      <div class="btn-group" [insideClick]="true" dropdown>
+        <button  (click)="onAction.emit('import')" type="button" class="theme-outline-button "
+          id="button-basic" dropdownToggle data-placement="top" title="view already saved column states">
+
+
+          <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="9.363" height="8.527" viewBox="0 0 9.363 8.527">
+            <g id="layout-three-columns" transform="translate(0.5 -1.75)">
+              <path id="Icon_feather-filter" data-name="Icon feather-filter"
+                d="M11.363,4.5H3L6.345,8.456v2.735l1.673.836V8.456Z" transform="translate(-3 -2.25)" fill="none"
+                stroke="#03abbb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+            </g>
+          </svg>
+          Filter
+          <i *ngIf="isLoading" class="fa fa-spinner fa-spin text-white"></i>
+
+        </button>
+        <div id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+          <div class="container mt-2 mb-2 ml-0">
+            <div class="row mb-2">
+              <div class="col-md-6">
+                <label for="date" class="form-label mb-0">Service From</label>
+                <input id="date" name="date" type="text" class="form-control" placeholder="Date" bsDatepicker
+                  autocomplete="off">
+              </div>
+              <div class="col-md-6">
+                <label for="time" class="form-label mb-0">Service To</label>
+                <input id="time" name="time" type="text" class="form-control" placeholder="Time" bsDatepicker
+                  autocomplete="off" [bsConfig]="{ adaptivePosition: true }" placement="right">
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-md-6">
+                <label for="staff" class="form-label mb-0">Sign From</label>
+                <input id="staff" name="staff" type="text" class="form-control" placeholder="Staff" bsDatepicker
+                  autocomplete="off">
+              </div>
+              <div class="col-md-6">
+                <label for="clientID" class="form-label mb-0">Sign To</label>
+                <input id="clientID" name="clientID" type="text" class="form-control" placeholder="Client ID"
+                  bsDatepicker autocomplete="off" [bsConfig]="{ adaptivePosition: true }" placement="right">
+              </div>
+            </div>
+            <div class="row mb-2 " >
+              <div class="col-md-6">
+                <label for="client" class="form-label mb-0">Week Starting</label>
+                <div class="btn-group" dropdown #dropdownItem="bs-dropdown" [insideClick]="true">
+                    <input id="clientID" name="clientID" type="text" class="form-control" placeholder="Client ID"
+                    autocomplete="off" dropdownToggle>
+                    <i class="bx bx-chevron-down"></i>
+                  <div id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                    aria-labelledby="button-animated">
+  
+                    <ul class="dropdown-ul">
+                      <li class="item">
+                        <div class="form-check d-flex align-items-center">
+                          <input type="checkbox">
+                          <label class="check-label">vcbncvnbc
+                          </label>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="form-check d-flex align-items-center">
+                          <input type="checkbox">
+                          <label class="check-label">vcbncvnbc
+                          </label>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="form-check d-flex align-items-center">
+                          <input type="checkbox">
+                          <label class="check-label">vcbncvnbc
+                          </label>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="form-check d-flex align-items-center">
+                          <input type="checkbox">
+                          <label class="check-label">vcnbc
+                          </label>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="form-check d-flex align-items-center">
+                          <input type="checkbox">
+                          <label class="check-label">vcbc
+                          </label>
+                        </div>
+                      </li>
+                     
+                      <li class="item">
+                        <div class="form-check d-flex align-items-center">
+                          <input type="checkbox">
+                          <label class="check-label">vcb
+                          </label>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="form-check d-flex align-items-center">
+                          <input type="checkbox">
+                          <label class="check-label">vcbc
+                          </label>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class=" apply modal-footer ">
+                      <button type="button" class="modal-cancel-button">
+                        Cancel
+                      </button>
+                      <button type="button" class="theme-outline-button">
+                        Filter
+                      </button>
+          
+                    </div>
+                  </div>
+                </div>
+            
+              </div>
+              <div class="col-md-6">
+                <label for="program" class="form-label mb-0">Program</label>
+                <input id="program" name="program" type="text" class="form-control" placeholder="Program">
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-md-6">
+                <label for="referral" class="form-label mb-0">DSP</label>
+                <input id="referral" name="referral" type="text" class="form-control" placeholder="Referral">
+              </div>
+              <div class="col-md-6">
+                <label for="specialProjectCode" class="form-label mb-0">Period</label>
+                <input id="specialProjectCode" name="specialProjectCode" type="text" class="form-control"
+                  placeholder="Special Project Code">
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-md-6">
+                <label for="signed" class="form-label mb-0">Referral</label>
+                <input id="signed" name="signed" type="text" class="form-control" placeholder="Signed">
+              </div>
+              <div class="col-md-6">
+                <label for="notImported" class="form-label mb-0">Client ID</label>
+                <input id="notImported" name="notImported" type="text" class="form-control" placeholder="Not Imported">
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-md-6">
+                <label for="uniqueID" class="form-label mb-0">Unique ID</label>
+                <input id="uniqueID" name="uniqueID" type="text" class="form-control" placeholder="Unique ID">
+              </div>
+              <div class="col-md-6">
+                <label for="activityCode" class="form-label mb-0">Session ID</label>
+                <input id="activityCode" name="activityCode" type="text" class="form-control"
+                  placeholder="Activity Code">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer gap-2">
+            <button type="button" class="modal-cancel-button">
+              Cancel
+            </button>
+            <button type="button" class="theme-outline-button">
+              Filter
+            </button>
+
+          </div>
+        </div>
+      </div> -->
+
+      <div class="position-relative">
+        <!-- <div class="filter-button-groups" *ngIf="saveFilters">
+                    <button type="button" class="nonBG-btn" (click)="getDefaultCustomFilter()" data-toggle="tooltip"
+                        data-placement="top" title="apply default column state">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="9.363" height="8.527" viewBox="0 0 9.363 8.527">
+                            <path id="Icon_feather-filter" data-name="Icon feather-filter"
+                                d="M11.363,4.5H3L6.345,8.456v2.735l1.673.836V8.456Z" transform="translate(-2.5 -4)"
+                                fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1" />
+                        </svg>
+                        Filter
+                    </button>
+                    <div dropdown (onShown)="getSaveFilters()" [insideClick]="true" container="body">
+                        <button type="button" class="nonBG-btn text-theme" id="button-basic" dropdownToggle
+                            aria-controls="dropdown-basic" data-toggle="tooltip" data-placement="top"
+                            title="view already saved column states">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9">
+                                <path id="Icon_feather-star" data-name="Icon feather-star"
+                                    d="M7,3,8.236,5.633,11,6.058,9,8.106,9.472,11,7,9.633,4.528,11,5,8.106,3,6.058l2.764-.425Z"
+                                    transform="translate(-2.5 -2.5)" fill="none" stroke="#4da0a5" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="1" />
+                            </svg>
+                            Saved View
+                        </button>
+                    </div>
+
+                    <div dropdown #dropdownSaveFilter="bs-dropdown" (onShown)="shownSaveFilter()" [insideClick]="true"
+                        container="body" placement="bottom left">
+                        <button dropdownToggle type="button" class="theme-outline-button" data-toggle="tooltip"
+                            data-placement="top" title="save or modify column state">
+                            Save View
+                        </button>
+                        <div *dropdownMenu class="dropdown-menu" role="menu">
+                            <form #filterForm="ngForm" autocomplete="off"
+                                (ngSubmit)="saveFilter(filterForm, dropdownSaveFilter,false)">
+                                <div class="form-group">
+                                    <label for="CustomFilterName" class="form-label">Filter Name</label>
+                                    <input type="text" class="form-control" name="CustomFilterName"
+                                        id="CustomFilterName" required placeholder="Enter filter name">
+                                </div>
+                                <button type="submit"
+                                    class="theme-button float-end font-10 weight-400 mb-2">Save</button>
+                            </form>
+    
+                        </div>
+                    </div>
+
+                    <div dropdown #dropdownSaveAsNewFilter="bs-dropdown" (onShown)="shownSaveAsFilter()"
+                        [insideClick]="true" container="body" *ngIf="(objDefaultFilter | json) !== '{}'">
+                        <button dropdownToggle type="button" class="theme-outline-button">Save as new filter</button>
+                        <div *dropdownMenu class="dropdown-menu" role="menu">
+                            <form #filterForm="ngForm" autocomplete="off"
+                                (ngSubmit)="saveFilter(filterForm, dropdownSaveAsNewFilter,true)">
+                                <div class="form-group">
+                                    <label for="CustomFilterName" class="form-label">Filter Name</label>
+                                    <input type="text" class="form-control" name="CustomFilterName"
+                                        id="CustomFilterName" required placeholder="Enter filter name">
+                                </div>
+                                <button type="submit" class="theme-button float-end font-10 weight-400">Save</button>
+                            </form>
+
+                        </div>
+                    </div>
+                    <button type="button" class="theme-outline-button" *ngIf="(objDefaultFilter | json) !== '{}'"
+                        (click)="refresh()">
+                        Refresh
+                    </button>
+                </div> -->
+        <!-- <ng-container *ngIf="filteredCols?.length">
+                    <div class="d-flex gap-2 align-items-center filtered-col">
+                        <span class="badge-danger badge-round font-9 filter-clear" (click)="clearFilter()">
+                            Clear
+                        </span>
+                        <span class="link-color" *ngFor="let col of filteredCols.slice(0,2); let i=index">
+                            {{col}} <span *ngIf="i==0 && filteredCols.length>1">,</span>
+                        </span>
+                        <div dropdown #cols="bs-dropdown" [insideClick]="true" container="body">
+                            <div dropdownToggle class="link-color weight-500" *ngIf="filteredCols.slice(2)?.length">
+                                {{filteredCols.slice(2).length}}+
+                            </div>
+                            <div *dropdownMenu class="dropdown-menu" role="menu">
+                                <div class="link-color" *ngFor="let col of filteredCols.slice(2); let i=index">
+                                    {{col}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container> -->
+      </div>
+      <span class="dash" *ngIf="!hidedash">|</span>
+      <ng-content></ng-content>
+      @for (action of objAction; track $index) {
+      <button *ngIf="!hidename" type="button" [class]="action.className" [disabled]="action.disabled"
+        (click)="onAction.emit(action.name)">
+        {{action.name}}
+      </button>
+      }
+    </div>
+  </div>
+  <div class="kjHousing-table-body">
+    <ag-grid-angular #agGrid id="myGrid" class="ag-theme-alpine" [rowHeight]="36" [headerHeight]="30"
+      [columnDefs]="columnDefs" [rowGroupPanelShow]="rowGroupPanelShow" [rowSelection]="rowSelection"
+      [animateRows]="true" [gridOptions]="gridOptions" [modules]="modules" [enableRangeSelection]="true">
+
+    </ag-grid-angular>
+    <div class="d-flex align-items-center mrow gap-2 font-10 py-1">
+      <span class="text-light rown">Rows: </span>
+      {{ totalRows | number }}
+
+    </div>
+  </div>
+</div>
+
+<!-- delete default filter confimation modal -->
+<!-- <ng-template #filterRemove>
+    <app-modal-layout [title]="'Delete Filter?'" [objAction]="[
+	{ name: 'No', className: 'modal-cancel-button' }, 
+	{ name: 'Yes' , className: 'danger-button' } 
+	]" (onAction)="filterRemoveConfirmationActions($event)">
+        <div class="text-center font-11">
+            Are you sure want delete filter?
+        </div>
+    </app-modal-layout>
+</ng-template> -->
+
+<!-- share filter modal -->
+<!-- <ng-template #shareFilterModal>
+    <app-modal-layout [title]="'Share Filter'" [objAction]="[
+	{ name: 'Cancel', className: 'modal-cancel-button' }, 
+	{ name: 'Share' , className: 'theme-button' } 
+	]" (onAction)="shareFilterActions($event)">
+        <div class="department-wrapper">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="form-head weight-600">Department</div>
+                <div class="form-check">
+                    <input type="checkbox" id="shareAll" name="shareAll" (click)="selectShareDep($event)">
+                    <label for="shareAll" class="check-label">Share All</label>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <div class="department-list d-flex align-items-center gap-2 flex-wrap">
+                        <div class="department-badge" [class.active]="haveDepartment(department)"
+                            id="dept-badge-{{department.DepartmentID}}" *ngFor="let department of lstDepartment">
+                            <div class="form-check">
+                                <input type="checkbox" id="dept_{{department.DepartmentID}}" name="dept"
+                                    (click)="selectDepartment($event, department)"
+                                    [checked]="haveDepartment(department)">
+                                <label for="dept_{{department.DepartmentID}}" class="check-label">
+                                    {{department.DepartmentName}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="systemUser-wrapper">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="form-head weight-600">All Users</div>
+                <div class="form-check">
+                    <input type="checkbox" id="selectAll" name="selectAll" (click)="selectAllSystemUser($event)">
+                    <label for="selectAll" class="check-label">Select All</label>
+                </div>
+            </div>
+            <div class="systemUser-wrapper-item mt-2">
+                <ng-container *ngIf="lstVMUserAndShareFilterDepartment!.length == 0">
+                    <div class="text-center font-11 text-light">No data found</div>
+                </ng-container>
+                <ng-container *ngIf="lstVMUserAndShareFilterDepartment!.length > 0">
+                    <div class="system-user-badge" id="user-badge-{{vMUserAndDepartmentMapping.SystemUserID}}"
+                        *ngFor="let vMUserAndDepartmentMapping of lstVMUserAndShareFilterDepartment">
+                        <div class="form-check d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center gap-1">
+                                <input type="checkbox" id="user-{{vMUserAndDepartmentMapping.SystemUserID}}"
+                                    name="userCheck" (click)="selectSystemUser($event, vMUserAndDepartmentMapping)"
+                                    [checked]="haveSystemUser(vMUserAndDepartmentMapping)">
+                                <label for="user-{{vMUserAndDepartmentMapping.SystemUserID}}"
+                                    class="check-label d-flex align-items-center gap-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+                                        <g id="Group_3636" data-nam+oup 3636"
+                                            transform="translate(4052.096 -16536.904)">
+                                            <circle id="Ellipse_1514" data-name="Ellipse 1514" cx="8.5" cy="8.5" r="8.5"
+                                                transform="translate(-4052.096 16536.904)" fill="#b9c2d3" />
+                                            <g id="user" transform="translate(-4046.929 16540.381)">
+                                                <path id="Path_826" data-name="Path 826"
+                                                    d="M12.555,2.944A1.736,1.736,0,1,1,10.819,4.68a1.736,1.736,0,0,1,1.736-1.736m0-.694a2.43,2.43,0,1,0,2.43,2.43,2.43,2.43,0,0,0-2.43-2.43Z"
+                                                    transform="translate(-9.084 -2.25)" fill="#fff" />
+                                                <path id="Path_827" data-name="Path 827"
+                                                    d="M13.693,24.416H13V22.68a1.736,1.736,0,0,0-1.736-1.736H9.18A1.736,1.736,0,0,0,7.444,22.68v1.736H6.75V22.68a2.43,2.43,0,0,1,2.43-2.43h2.083a2.43,2.43,0,0,1,2.43,2.43Z"
+                                                    transform="translate(-6.75 -14.696)" fill="#fff" />
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    <span class="systemUser-name-text font-11 weight-600"
+                                        [tooltip]="vMUserAndDepartmentMapping?.FullName" containerClass="tooltipClass">
+                                        {{vMUserAndDepartmentMapping?.FullName}}</span>
+                                </label>
+                            </div>
+                            <div class="d-flex align-items-center gap-1">
+                                <span class="badge-departmet-theme badge-round font-9"
+                                    *ngFor="let vMUserAndDepartment of vMUserAndDepartmentMapping?.lstShareFilterDepartment">
+                                    {{vMUserAndDepartment?.DepartmentName}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </app-modal-layout>
+</ng-template> -->

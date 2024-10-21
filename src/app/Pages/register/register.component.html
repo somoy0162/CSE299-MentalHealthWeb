@@ -1,0 +1,160 @@
+<div class="authentiaction-content">
+	<div class="card authentication-card">
+		<div class="logo-image">
+			<h1 class="logo">Counseling Center</h1>
+		</div>
+
+		<div class="goBack-icon mt-3" (click)="goback()">
+			<svg xmlns="http://www.w3.org/2000/svg" width="13.452" height="13.452" viewBox="0 0 13.452 13.452">
+				<g id="arrow-circle-left" transform="translate(-1.125 -1.128)">
+					<path id="Path_7883" data-name="Path 7883"
+						d="M7.851,1.128a6.726,6.726,0,1,0,6.726,6.726A6.726,6.726,0,0,0,7.851,1.128Zm4.122,10.847a5.808,5.808,0,1,1,1.25-1.853,5.808,5.808,0,0,1-1.25,1.853Z"
+						transform="translate(0 0)" fill="#888" />
+					<path id="Path_7884" data-name="Path 7884"
+						d="M13.4,10.644l-.634-.634L9.584,13.2l3.186,3.186.634-.634-2.1-2.1h5.253v-.9H11.3Z"
+						transform="translate(-5.087 -5.342)" fill="#888" />
+				</g>
+			</svg>
+			<!-- <i class='bx bx-left-arrow-circle font-16'></i> -->
+			<span class="goBack m-0">Go Back</span>
+		</div>
+		<div class="heading-part w-100">
+			<h6 class="text1">Registration</h6>
+		</div>
+		<div class="authentication-form w-100 mb-9">
+			<form name="registerForm" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()" novalidate>
+
+				<!-- <div class="form-group mt-1">
+					<label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
+					<input type="text" class="form-control" name="firstName" id="firstName"
+						placeholder="Enter first name" [(ngModel)]="objVmRegister.FirstName" required
+						#firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.errors }">
+					<div *ngIf="f.submitted && firstName.errors" class="invalid-feedback">
+						<div *ngIf="firstName.errors['required']">First name is required</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
+					<input type="text" class="form-control" name="lastName" id="lastName" placeholder="Enter last name"
+						[(ngModel)]="objVmRegister.LastName" required #lastName="ngModel"
+						[ngClass]="{ 'is-invalid': f.submitted && lastName.errors }">
+					<div *ngIf="f.submitted && lastName.errors" class="invalid-feedback">
+						<div *ngIf="lastName.errors['required']">Last name is required</div>
+					</div>
+				</div> -->
+				<div class="form-group">
+					<label for="userName" class="form-label">Username <span class="text-danger">*</span></label>
+					<input type="text" class="form-control" name="userName" id="userName" placeholder="Enter username"
+						[(ngModel)]="objVmRegister.UserName" required maxlength="20" #userName="ngModel"
+						autocomplete="off" [ngClass]="{ 'is-invalid': f.submitted && userName.errors }">
+					<div *ngIf="f.submitted && userName.errors" class="invalid-feedback">
+						<div *ngIf="userName.errors['required']">Username is required</div>
+						<div *ngIf="userName.errors['maxlength']">
+							Username must be at most 20 characters
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+					<input type="email" class="form-control" name="email" id="email" placeholder="Enter email"
+						[(ngModel)]="objVmRegister.Email" required email #email="ngModel"
+						[ngClass]="{ 'is-invalid': f.submitted && email.errors }">
+					<div *ngIf="f.submitted && email.errors" class="invalid-feedback">
+						<div *ngIf="email.errors['required']">Email is required</div>
+						<div *ngIf="email.errors['email']">Email is invalid</div>
+					</div>
+				</div>
+				<!-- <div class="form-group">
+					<label for="phoneNumber" class="form-label">Phone Number <span class="text-danger">*</span></label>
+					<input type="text" class="form-control" name="phoneNumber" id="phoneNumber"
+						placeholder="000 000 0000" [(ngModel)]="objVmRegister.PhoneNumber" required minlength="12"
+						maxlength="13" #phoneNumber="ngModel" appPhoneMask (input)="numbersOnlyValidator($event)"
+						[ngClass]="{ 'is-invalid': f.submitted && phoneNumber.errors }">
+					<div *ngIf="phoneNumber.errors && phoneNumber.dirty  && phoneNumber.invalid"
+						class="invalid-feedback"> -->
+				<!-- <div *ngIf="phoneNumber.errors['required']">
+							Phone number is required
+						</div> -->
+				<!-- <div *ngIf="phoneNumber.errors['minlength'] || phoneNumber.errors['maxlength']">
+							Phone number must be at 10 to 11 digit
+						</div>
+					</div>
+				</div> -->
+				<div class="form-group">
+					<label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+					<div class="form-password">
+
+						<input [type]="isShowPassword ? 'text' : 'password'" class="form-control" name="password"
+							id="password" placeholder="Enter password" [(ngModel)]="objVmRegister.Password" required
+							minlength="4" maxlength="40" #password="ngModel" autocomplete="off"
+							[ngClass]="{ 'is-invalid': f.submitted && password.errors }">
+						<svg *ngIf="!isShowPassword" (click)="isShowPassword = !isShowPassword"
+							xmlns="http://www.w3.org/2000/svg" width="13.701" height="13.701"
+							viewBox="0 0 13.701 13.701">
+							<g id="Icon_feather-eye-off" data-name="Icon feather-eye-off"
+								transform="translate(0.849 0.849)">
+								<path id="Path_5704" data-name="Path 5704"
+									d="M10.743,13.606A5.5,5.5,0,0,1,7.5,14.73c-3.819,0-6-4.365-6-4.365A10.067,10.067,0,0,1,4.261,7.124m2.1-.993A4.976,4.976,0,0,1,7.5,6c3.819,0,6,4.365,6,4.365a10.094,10.094,0,0,1-1.179,1.741m-3.667-.584A1.637,1.637,0,1,1,6.345,9.208"
+									transform="translate(-1.5 -4.363)" fill="none" stroke="#888" stroke-linecap="round"
+									stroke-linejoin="round" stroke-width="1.2" />
+								<path id="Path_5705" data-name="Path 5705" d="M1.5,1.5l12,12"
+									transform="translate(-1.5 -1.5)" fill="none" stroke="#888" stroke-linecap="round"
+									stroke-linejoin="round" stroke-width="1.2" />
+							</g>
+						</svg>
+						<svg *ngIf="isShowPassword" class="show-pass" (click)="isShowPassword = !isShowPassword"
+							xmlns="http://www.w3.org/2000/svg" width="13.204" height="9.93" viewBox="0 0 13.204 9.93">
+							<g id="Icon_feather-eye" data-name="Icon feather-eye" transform="translate(0.6 0.601)">
+								<path id="Path_5706" data-name="Path 5706"
+									d="M1.5,10.365S3.683,6,7.5,6s6,4.365,6,4.365-2.183,4.365-6,4.365S1.5,10.365,1.5,10.365Z"
+									transform="translate(-1.5 -6.001)" fill="none" stroke="#888" stroke-linecap="round"
+									stroke-linejoin="round" stroke-width="1.2" />
+								<path id="Path_5707" data-name="Path 5707"
+									d="M16.774,15.137A1.637,1.637,0,1,1,15.137,13.5,1.637,1.637,0,0,1,16.774,15.137Z"
+									transform="translate(-9.135 -10.773)" fill="none" stroke="#888"
+									stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+							</g>
+						</svg>
+						<div *ngIf="f.submitted && password.errors" class="invalid-feedback">
+							<div *ngIf="password.errors['required']">Password is required</div>
+							<div *ngIf="password.errors['minlength']">
+								Password must be at least 4 characters
+							</div>
+							<div *ngIf="password.errors['maxlength']">
+								Password must not exceed 40 characters
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="confirmPassword" class="form-label">Confirm Password <span
+							class="text-danger">*</span></label>
+					<div class="form-password">
+
+						<input type="password" class="form-control" name="confirmPassword" id="confirmPassword"
+							placeholder="Enter confirm password" [(ngModel)]="objVmRegister.ConfirmPassword" required
+							#confirmPassword="ngModel"
+							[ngClass]="{ 'is-invalid': f.submitted && confirmPassword.errors }">
+					</div>
+					<div *ngIf="f.submitted && confirmPassword.errors" class="invalid-feedback">
+						<div *ngIf="confirmPassword.errors['required']">
+							Confirm Password is required
+						</div>
+						<div *ngIf="confirmPassword.errors['matching']">
+							Confirm Password does not match
+						</div>
+					</div>
+				</div>
+				<button type="submit" class="authentication-button mt-3" [disabled]="isLoading">
+					Signup
+					<i class="fa fa-spinner fa-spin text-white" *ngIf="isLoading"></i>
+				</button>
+			</form>
+			<div class="d-flex align-items-center justify-content-center gap-2 mt-2">
+				<span class="font-11">Already have an account?</span>
+				<a class="theme-link weight-400" [routerLink]="['/login']">Sign in</a>
+			</div>
+		</div>
+
+	</div>
+</div>

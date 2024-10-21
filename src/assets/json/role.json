@@ -1,0 +1,60 @@
+[
+    {
+        "Id": 0,
+        "name": "admin",
+        "permissions": [
+            {
+                "id": 0,
+                "name": "login",
+                "actions": [
+                    {
+                        "id": 0,
+                        "registration": true
+                    }
+                ]
+            },
+            {
+                "id": 0,
+                "name": "dashboard",
+                "actions": [
+                    {
+                        "id": 0,
+                        "note-delete": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Id": 0,
+        "name": "user",
+        "permissions": [
+            {
+                "id": 0,
+                "name": "login",
+                "actions": [
+                    {
+                        "id": 0,
+                        "registration": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Id": 0,
+        "name": "supervisor",
+        "permissions": [
+            {
+                "id": 0,
+                "name": "login",
+                "actions": [
+                    {
+                        "id": 0,
+                        "registration": true
+                    }
+                ]
+            }
+        ]
+    }
+]

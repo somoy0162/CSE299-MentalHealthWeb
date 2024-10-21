@@ -1,0 +1,71 @@
+.mt-4{
+    margin-top: 81px !important;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: -2px;
+}
+.mt-1 {
+    margin-top: -0.75rem !important;
+}
+
+
+/* a.theme-link:hover {
+    text-decoration: underline;
+    color: var(--theme-color);
+}
+
+
+a.theme-link {
+    color: var(--theme-color);
+    color: #5bc7d1;
+    
+}
+
+a.theme-link-regi {
+    color: #7ad9e1;
+    
+} */
+
+/* a.theme-link-regi:hover {
+    text-decoration: underline;
+    color: #7ad9e1;
+} */
+
+.logo {
+    position: absolute;
+    top: 27px;
+    width: 100%;
+    left: 61px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #058d73eb;
+    font-family: system-ui;
+}
+
+.form-check input[type=checkbox] {
+    
+    margin: 0 0.6em 0 -20px;
+}
+.form-check input[type=checkbox]:checked {
+    background-color: #007660;
+    border-color: #007660;
+}
+.form-check input:hover {
+    border-color: #007660;
+}
+.form-check {
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.5em;
+    margin-bottom: 8px;
+}
+
+a.theme-link:hover {
+    text-decoration: underline;
+    color: #00715c;
+}
+a.theme-link {
+    color: #00715c;
+}

@@ -1,0 +1,37 @@
+<div class="toaster">
+	<div class="toast-icon" [class]="options.toastClass">
+		<!-- <i class="fa fa-info-circle info-icon"></i> -->
+	</div>
+	<div class="toast-details">
+		<div>
+			@if (title) {
+				<div [class]="options.titleClass" [attr.aria-label]="title" class="custom-title">
+					{{ title }}
+				</div>
+			}
+			@if (message) {
+				@if (options.enableHtml) {
+					<div role="alert" aria-live="polite" class="custom-message"
+					[class]="options.messageClass" [innerHTML]="message"></div>
+				} @else {
+					<div role="alert" aria-live="polite" class="custom-message"
+						[class]="options.messageClass" [attr.aria-label]="message">
+						{{ message }}
+					</div>
+				}
+			}
+		</div>
+	</div>
+	<div class="close-icon">
+		@if (options.closeButton) {
+			<a (click)="remove()" class="toast-close-button">
+				&times;
+			</a>
+		}
+	</div>
+</div>
+@if (options.progressBar) {
+	<div>
+		<div class="toast-progress" [style.width]="width + '%'"></div>
+	</div>
+}
