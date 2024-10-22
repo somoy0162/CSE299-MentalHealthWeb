@@ -7,4 +7,5 @@ export class LogInUser {
     Email!: string;
     PhoneNumber!: string;
     Role: number = 0;
+    Gender!: number;
 }
