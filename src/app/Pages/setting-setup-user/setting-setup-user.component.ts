@@ -28,6 +28,7 @@ import { SecurityService } from '../../Common/service/security.service';
 import { SystemUserService } from '../../Common/service/system-user.service';
 import { LogInUser } from '../../Model/log-in-user';
 import { PhoneNumberPipe } from '../../Common/pipes/PhoneNumber.pipe';
+import { Gender } from '../../Model/gender';
 
 @Component({
 	selector: 'app-setting-setup-user',
@@ -73,6 +74,7 @@ export class SettingSetupUserComponent implements OnInit, OnDestroy {
 	ngOnInit(): void {
 		Promise.resolve().then(() => this.headerService.setTitle('Users'));
 		this.getAllRole();
+		this.getAllGender();
 	}
 
 	private _searchText: string = "";
@@ -88,6 +90,9 @@ export class SettingSetupUserComponent implements OnInit, OnDestroy {
 	public columnDefs: any[] = [
 		{
 			...this.aggridService.createColumnDef("Name", "Name", "agTextColumnFilter"),
+		},
+		{
+			...this.aggridService.createColumnDef("Gender", "GenderName", "agTextColumnFilter"),
 		},
 		{
 			...this.aggridService.createColumnDef("Email ", "Email", "agTextColumnFilter"),
@@ -275,6 +280,17 @@ export class SettingSetupUserComponent implements OnInit, OnDestroy {
 			.subscribe((response: any) => {
 				if (response.ResponseCode == ResponseStatus.success) {
 					this.roles = response.ResponseObj;
+				}
+			})
+	}
+
+	genders: Gender[] = [];
+	getAllGender() {
+		this.systemUserService.getAllGender()
+			.pipe(takeUntil(this.destroy))
+			.subscribe((response: any) => {
+				if (response.ResponseCode == ResponseStatus.success) {
+					this.genders = response.ResponseObj;
 				}
 			})
 	}
