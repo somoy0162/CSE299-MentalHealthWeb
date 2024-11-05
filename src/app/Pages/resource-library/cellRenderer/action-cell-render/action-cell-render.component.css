@@ -1,0 +1,17 @@
+.actions {
+    margin: 5px 0;
+}
+
+::ng-deep.edit:not(:disabled):hover svg path {
+    stroke: var(--bs-dark)!important;
+}
+
+
+.edit svg path {
+    stroke: var(--bs-dark)!important;
+    background: transparent;
+    outline: none !important;
+    box-shadow: none !important;
+    transition: all 0.3s ease;
+}
+ 

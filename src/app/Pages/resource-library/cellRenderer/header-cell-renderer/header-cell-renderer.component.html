@@ -1,0 +1,4 @@
+<div class="form-check d-flex align-items-center">
+    <input type="checkbox" [id]="'clients_id_'+params.rowIndex" [name]="'clients_name_'+params.rowIndex" class="check"
+        [(ngModel)]="selected" (ngModelChange)="ngModelChange($event)">
+</div>
