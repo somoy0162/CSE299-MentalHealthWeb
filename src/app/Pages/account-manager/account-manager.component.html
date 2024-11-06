@@ -1,1 +1,216 @@
-<p>account-manager works!</p>
+<div class="row align-content-between flex-wrap">
+
+    <div class="col-md-12">
+        <div class="personalinfo1">
+            <form #systemUserForm="ngForm" (ngSubmit)="onSubmit()" class="personalInformation">
+                <h4 class="font-13 weight-600">Change Personal Information</h4>
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="firstName" class="form-label">Name</label>
+                            <input type="text" id="firstName" name="firstName" class="form-control"
+                                placeholder="Enter first name" required [(ngModel)]="systemUser.Name">
+                            <!-- <div *ngIf="systemUserForm.submitted && password.errors" class="invalid-feedback">
+                                 <div *ngIf="firstName.errors['required']">First name is required</div>
+                            </div>  -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- <div class="form-group">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input [value]="systemUser.Name" type="text" id="lastName" name="lastName" class="form-control"
+                            placeholder="Enter last name" required>
+                    </div> -->
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <input [(ngModel)]="systemUser.PhoneNumber" type="text" class="form-control"
+                                name="phoneNumber" id="phoneNumber" placeholder="Enter phone number" minlength="11"
+                                maxlength="15" (input)="numbersOnlyValidator($event)" required>
+                            <!-- <div *ngIf="systemUserForm.submitted && password.errors" class="invalid-feedback">
+                                <div *ngIf="password.errors['required']">First name is required</div>
+                            </div> -->
+                            <!-- <div *ngIf="phoneNumber.errors && (phoneNumber.dirty || systemUserForm.submitted) && phoneNumber.invalid"
+                            class="invalid-feedback">
+                            <div *ngIf="phoneNumber.errors['required']">
+                                Phone number is required
+                            </div>
+                            <div *ngIf="phoneNumber.errors['minlength'] || phoneNumber.errors['maxlength']">
+                                Phone number must be at 10 to 11 digit
+                            </div>
+                        </div> -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input [(ngModel)]="systemUser.Email" type="email" class="form-control" name="email"
+                                id="email" placeholder="Enter email">
+                            <!-- <div *ngIf="email.errors && (email.dirty || systemUserForm.submitted) && email.invalid"
+                            class="invalid-feedback">
+                            <div *ngIf="email.errors['required']">Email is required</div>
+                            <div *ngIf="email.errors['email']">Email is invalid</div>
+                        </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3 update-button">
+                    <button type="submit" class="theme-button">Save Changes</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-12">
+            <div class="personalinfo2">
+                <form #passowrdForm="ngForm" (ngSubmit)="onUpdatePassword()">
+                    <h4 class="font-13 weight-600">Change Password</h4>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="password" class="form-label">Current Passowrd</label>
+                                <div class="form-password">
+                                    <input [type]="isShowPassword ? 'text' : 'password'" id="password"
+                                        class="form-control" placeholder="Current Passowrd" name="password"
+                                        [(ngModel)]="vmPasswordChange.CurrentPassword">
+                                    <svg *ngIf="!isShowPassword" (click)="isShowPassword = !isShowPassword"
+                                        xmlns="http://www.w3.org/2000/svg" width="13.701" height="13.701"
+                                        viewBox="0 0 13.701 13.701">
+                                        <g id="Icon_feather-eye-off" data-name="Icon feather-eye-off"
+                                            transform="translate(0.849 0.849)">
+                                            <path id="Path_5704" data-name="Path 5704"
+                                                d="M10.743,13.606A5.5,5.5,0,0,1,7.5,14.73c-3.819,0-6-4.365-6-4.365A10.067,10.067,0,0,1,4.261,7.124m2.1-.993A4.976,4.976,0,0,1,7.5,6c3.819,0,6,4.365,6,4.365a10.094,10.094,0,0,1-1.179,1.741m-3.667-.584A1.637,1.637,0,1,1,6.345,9.208"
+                                                transform="translate(-1.5 -4.363)" fill="none" stroke="#888"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+                                            <path id="Path_5705" data-name="Path 5705" d="M1.5,1.5l12,12"
+                                                transform="translate(-1.5 -1.5)" fill="none" stroke="#888"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+                                        </g>
+                                    </svg>
+                                    <svg *ngIf="isShowPassword" class="show-pass"
+                                        (click)="isShowPassword = !isShowPassword" xmlns="http://www.w3.org/2000/svg"
+                                        width="13.204" height="9.93" viewBox="0 0 13.204 9.93">
+                                        <g id="Icon_feather-eye" data-name="Icon feather-eye"
+                                            transform="translate(0.6 0.601)">
+                                            <path id="Path_5706" data-name="Path 5706"
+                                                d="M1.5,10.365S3.683,6,7.5,6s6,4.365,6,4.365-2.183,4.365-6,4.365S1.5,10.365,1.5,10.365Z"
+                                                transform="translate(-1.5 -6.001)" fill="none" stroke="#888"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+                                            <path id="Path_5707" data-name="Path 5707"
+                                                d="M16.774,15.137A1.637,1.637,0,1,1,15.137,13.5,1.637,1.637,0,0,1,16.774,15.137Z"
+                                                transform="translate(-9.135 -10.773)" fill="none" stroke="#888"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+                                        </g>
+                                    </svg>
+                                    <!-- <div *ngIf="password.errors && (password.dirty || passowrdForm.submitted) && password.invalid"
+                                class="invalid-feedback">
+                                <div *ngIf="password.errors['required']">Password is required</div>
+                            </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="confirmPassword" class="form-label">New Password</label>
+                                <div class="form-password">
+                                    <input [type]="isNewShowPassword ? 'text' : 'password'" class="form-control"
+                                        name="newPassword" id="newPassword" placeholder="New Password"
+                                        [(ngModel)]="vmPasswordChange.NewPassword">
+                                    <svg *ngIf="!isNewShowPassword" (click)="isNewShowPassword = !isNewShowPassword"
+                                        xmlns="http://www.w3.org/2000/svg" width="13.701" height="13.701"
+                                        viewBox="0 0 13.701 13.701">
+                                        <g id="Icon_feather-eye-off" data-name="Icon feather-eye-off"
+                                            transform="translate(0.849 0.849)">
+                                            <path id="Path_5704" data-name="Path 5704"
+                                                d="M10.743,13.606A5.5,5.5,0,0,1,7.5,14.73c-3.819,0-6-4.365-6-4.365A10.067,10.067,0,0,1,4.261,7.124m2.1-.993A4.976,4.976,0,0,1,7.5,6c3.819,0,6,4.365,6,4.365a10.094,10.094,0,0,1-1.179,1.741m-3.667-.584A1.637,1.637,0,1,1,6.345,9.208"
+                                                transform="translate(-1.5 -4.363)" fill="none" stroke="#888"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+                                            <path id="Path_5705" data-name="Path 5705" d="M1.5,1.5l12,12"
+                                                transform="translate(-1.5 -1.5)" fill="none" stroke="#888"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+                                        </g>
+                                    </svg>
+                                    <svg *ngIf="isNewShowPassword" class="show-pass"
+                                        (click)="isNewShowPassword = !isNewShowPassword"
+                                        xmlns="http://www.w3.org/2000/svg" width="13.204" height="9.93"
+                                        viewBox="0 0 13.204 9.93">
+                                        <g id="Icon_feather-eye" data-name="Icon feather-eye"
+                                            transform="translate(0.6 0.601)">
+                                            <path id="Path_5706" data-name="Path 5706"
+                                                d="M1.5,10.365S3.683,6,7.5,6s6,4.365,6,4.365-2.183,4.365-6,4.365S1.5,10.365,1.5,10.365Z"
+                                                transform="translate(-1.5 -6.001)" fill="none" stroke="#888"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+                                            <path id="Path_5707" data-name="Path 5707"
+                                                d="M16.774,15.137A1.637,1.637,0,1,1,15.137,13.5,1.637,1.637,0,0,1,16.774,15.137Z"
+                                                transform="translate(-9.135 -10.773)" fill="none" stroke="#888"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+                                        </g>
+                                    </svg>
+                                </div>
+                                <!-- <div *ngIf="newPassword.errors && (newPassword.dirty || passowrdForm.submitted) && newPassword.invalid"
+                            class="invalid-feedback">
+                            <div *ngIf="newPassword.errors['required']">
+                                Confirm Password is required
+                            </div>
+                        </div> -->
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <div class="form-group">
+                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                <div class="form-password">
+                                    <input [type]="isConfirmShowPassword ? 'text' : 'password'" class="form-control"
+                                        name="confirmPassword" id="confirmPassword" placeholder="Confirm Password"
+                                        [(ngModel)]="vmPasswordChange.ConfirmPassword">
+                                    <svg *ngIf="!isConfirmShowPassword"
+                                        (click)="isConfirmShowPassword = !isConfirmShowPassword"
+                                        xmlns="http://www.w3.org/2000/svg" width="13.701" height="13.701"
+                                        viewBox="0 0 13.701 13.701">
+                                        <g id="Icon_feather-eye-off" data-name="Icon feather-eye-off"
+                                            transform="translate(0.849 0.849)">
+                                            <path id="Path_5704" data-name="Path 5704"
+                                                d="M10.743,13.606A5.5,5.5,0,0,1,7.5,14.73c-3.819,0-6-4.365-6-4.365A10.067,10.067,0,0,1,4.261,7.124m2.1-.993A4.976,4.976,0,0,1,7.5,6c3.819,0,6,4.365,6,4.365a10.094,10.094,0,0,1-1.179,1.741m-3.667-.584A1.637,1.637,0,1,1,6.345,9.208"
+                                                transform="translate(-1.5 -4.363)" fill="none" stroke="#888"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+                                            <path id="Path_5705" data-name="Path 5705" d="M1.5,1.5l12,12"
+                                                transform="translate(-1.5 -1.5)" fill="none" stroke="#888"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+                                        </g>
+                                    </svg>
+                                    <svg *ngIf="isConfirmShowPassword" class="show-pass"
+                                        (click)="isConfirmShowPassword = !isConfirmShowPassword"
+                                        xmlns="http://www.w3.org/2000/svg" width="13.204" height="9.93"
+                                        viewBox="0 0 13.204 9.93">
+                                        <g id="Icon_feather-eye" data-name="Icon feather-eye"
+                                            transform="translate(0.6 0.601)">
+                                            <path id="Path_5706" data-name="Path 5706"
+                                                d="M1.5,10.365S3.683,6,7.5,6s6,4.365,6,4.365-2.183,4.365-6,4.365S1.5,10.365,1.5,10.365Z"
+                                                transform="translate(-1.5 -6.001)" fill="none" stroke="#888"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+                                            <path id="Path_5707" data-name="Path 5707"
+                                                d="M16.774,15.137A1.637,1.637,0,1,1,15.137,13.5,1.637,1.637,0,0,1,16.774,15.137Z"
+                                                transform="translate(-9.135 -10.773)" fill="none" stroke="#888"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+                                        </g>
+                                    </svg>
+                                </div>
+                                <!-- <div *ngIf="confirmPassword.errors && (confirmPassword.dirty || passowrdForm.submitted) && confirmPassword.invalid"
+                            class="invalid-feedback">
+                            <div *ngIf="confirmPassword.errors['required']">
+                                Confirm Password is required
+                            </div>
+                            <div *ngIf="confirmPassword.errors['matching']">
+                                Confirm Password does not match
+                            </div>
+                        </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 update-button">
+                        <button type="submit" class="theme-button">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>

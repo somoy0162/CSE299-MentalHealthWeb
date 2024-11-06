@@ -6,32 +6,35 @@ import { LocalstoreService } from '../service/localstore.service';
 })
 export class PhoneNumberPipe implements PipeTransform {
 
-    format = {
-        format_1: "(000) 000-0000",
-        format_2: "000-000-0000"
-    }
-
-    constructor(private localstoreService: LocalstoreService) { }
-
-    transform(value: string, type: number = 1): any {
-        try {
-            // const defaultSetting: DefaultSettings = this.localstoreService.getData('selectedDefaultSettings');
-            // type = defaultSetting && defaultSetting.PhoneNumberFormat == this.format.format_2 ? 2 : 1;
-            if (!value) return value;
-            value = value?.replace(' ', '')?.replace(/[^\w\s]/gi, '')?.replace(/\D+/g, '');
-            switch (value?.length) {
-                case 11:
-                    if (type == 1) return value.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, "+$1 ($2) $3-$4");
-                    else return value.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, "+$1 $2-$3-$4");
-                case 10:
-                    if (type == 1) return value.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
-                    else return value.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
-                default:
-                    if (type == 1) return value.replace(/(\d{3})(\d{3})(\d{3})/, "($1) $2-$3");
-                    else return value.replace(/(\d{3})(\d{3})(\d{3})/, "$1-$2-$3");
-            }
-        } catch (error) {
+    // Transform method to format phone numbers for display
+    transform(value: string): string {
+        if (!value) {
             return value;
         }
+
+        // Remove any non-numeric characters except the initial "+88"
+        let formattedPhoneNumber = value.replace(/[^0-9+]/g, '');
+
+        // If it starts with "01", prepend "+88"
+        if (formattedPhoneNumber.startsWith('01')) {
+            formattedPhoneNumber = `+88 ${formattedPhoneNumber}`;
+        }
+
+        // If it doesn't start with "+88" and is long enough, fix the format
+        if (!formattedPhoneNumber.startsWith('+88') && formattedPhoneNumber.length >= 11) {
+            formattedPhoneNumber = `+88 ${formattedPhoneNumber.slice(-11)}`;
+        }
+
+        return formattedPhoneNumber;
+    }
+
+    // Parse method to strip "+88" before saving
+    parse(value: string): string {
+        if (!value) {
+            return value;
+        }
+
+        // Remove "+88" prefix if present
+        return value.replace(/^(\+88\s?)?/, '');
     }
 }
