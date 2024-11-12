@@ -1,86 +1,74 @@
-
 .highlight-wrapper {
-    width: 100%;
-    display: flex;
-    padding: 1%;
-    border-radius: 8px;
-    gap: 1rem;
-    overflow-x: hidden;
-  }
-  
-  .highlight-card {
-    display: flex;
-    flex-direction: row;
-    width: 80%;
-    height: 100%;
-    gap: 1rem;
-    /* border-radius: 13px; */
-    padding: 1%;
-    /* background-color: var(--whiteColor); */
-    box-shadow: rgba(176, 176, 176, 0.2) 0px 2px 8px 0px;
-    border: 2px solid #e0e0e0;
-    margin-left: -2px;
-    margin-top: -3px;
-    background: #f5f5f5;
-}
-  
-  .highlight-img {
-    width: 73px;
-    height: 81px;
-    border-radius: 8px;
-    object-fit: cover;
-    object-position: center;
-  }
-  
-  .highlight-desc h4 {
-    font-size: 16px;
-    font-weight: 500;
-    margin: 6px 0px;
-
-  }
-  
-  .highlight-desc p{
-    color: var(--blackColor);
-    font-size: 14px;
-    line-height: 6px;
-    font-weight: 400;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  padding: 1%;
+  width: 100%;
+  border-radius: 8px;
 }
 
-  .highlight-card:hover {
-    background-color: #6c757d1f;
-    box-shadow: rgba(176, 176, 176, 0.2) 0px 2px 8px 0px;
+.highlight-card {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+  padding: 1%;
+  box-shadow: rgba(176, 176, 176, 0.2) 0px 2px 8px 0px;
+  border: 2px solid #e0e0e0;
+  margin: 0;
+  background: #f5f5f5;
 }
 
-  .main-highlight {
-    overflow-x: auto;
-    max-height: 100%;
-    /* margin: 2% 2px;
-    padding: 2%;
-    background-color: #fefefe;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 8px; */
-  }
-  
-  .main-header {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .main-title {
-    font-size: 18px;
-    font-weight: 600;
-    margin-left: 20px;
-    margin-top: -9px;
+.highlight-img {
+  width: 73px;
+  height: 81px;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
 }
-  
-  .main-arrow {
-    font-size: 20px;
-  }
 
-  h6{
-    font-size: 14px;
-    font-weight: 700;
+.highlight-desc h4 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 6px 0;
+}
 
-  }
+.highlight-desc p {
+  color: var(--blackColor);
+  font-size: 14px;
+  line-height: 6px;
+  font-weight: 400;
+}
+
+.highlight-card:hover {
+  background-color: #6c757d1f;
+  box-shadow: rgba(176, 176, 176, 0.2) 0px 2px 8px 0px;
+}
+
+.main-highlight {
+  overflow-x: hidden;
+  max-height: 100%;
+}
+
+.main-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-left: 20px;
+  margin-top: -9px;
+}
+
+.main-arrow {
+  font-size: 20px;
+}
+
+h6 {
+  font-size: 14px;
+  font-weight: 700;
+}

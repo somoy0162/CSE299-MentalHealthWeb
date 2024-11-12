@@ -22,4 +22,19 @@ export class SystemUserService {
     const url = 'api/systemUser/DeleteSystemUserById/' + userID;
     return this.httpHelper.getHelper(url);
   }
+
+  updatePersonalDetails(obj: any) {
+    const url = 'api/systemUser/UpdatePersonalDetails'
+    return this.httpHelper.postHelper(url, obj);
+  }
+
+  updatePassword(obj: any) {
+    const url = 'api/systemUser/UpdatePassword'
+    return this.httpHelper.postHelper(url, obj);
+  }
+
+  getAllGender() {
+    const url = 'api/systemUser/GetAllGender'
+    return this.httpHelper.getHelper(url);
+  }
 }

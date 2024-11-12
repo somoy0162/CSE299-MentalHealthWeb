@@ -242,6 +242,9 @@ export class AgGridLayoutComponent implements OnInit, OnDestroy {
 	// 		});
 	// }
 
+
+	
+	
 	transformFilterModel(filterModel: any): any {
 		const filterModels: any[] = [];
 		Object.keys(filterModel).forEach((key) => {
