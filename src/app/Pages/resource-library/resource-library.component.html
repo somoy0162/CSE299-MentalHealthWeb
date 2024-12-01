@@ -1,1 +1,42 @@
-<p>resource-library works!</p>
+<app-ag-grid-layout [columnDefs]="columnDefs" [gridOptions]="gridOptions" [rowSelection]="rowSelection"
+    [isHistory]="true" [saveFilters]="true" [objAction]="[{ name: 'Add New' , className: 'theme-button' }]"
+    (onAction)="onAction($event)" [(searchText)]="searchText" [IsSettingShow]="true" [hideformfield]="true"
+    [hideLayout]="true" [hiderefresh]="true"  [hidedash]="true" [hideImport]="true" [hidename]="true">
+    <div class="contactGroupUpload d-flex me-2">
+        <button *ngIf="!selectedFile" class="theme-outline-button me-2"
+            (click)="openExportModal()">
+            <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="7.621" height="8" viewBox="0 0 7.621 8">
+                <path id="import"
+                  d="M10.287,7.47l1.544-1.3.673.566L9.81,9,7.116,6.739l.673-.566,1.545,1.3V3h.953ZM6,8.6h.953v1.6h5.716V8.6h.953v1.6a.889.889,0,0,1-.953.8H6.953A.907.907,0,0,1,6,10.2Z"
+                  transform="translate(-6 -3)" fill="#03abbb" fill-rule="evenodd" />
+              </svg>
+              Upload
+        </button>
+        </div>
+</app-ag-grid-layout>
+
+<!-- delete imareport confirmation modal -->
+<ng-template #imareportDeleteModal>
+    <app-modal-layout [title]="'Delete File?'" [objAction]="[
+{ name: 'No', className: 'modal-cancel-button' }, 
+{ name: 'Yes' , className: 'danger-button' } 
+]" (onAction)="onRemoveimareport($event,'id')">
+        <div class="text-center font-11">Are you sure you want to remove this file?</div>
+    </app-modal-layout>
+</ng-template>
+
+
+
+<ng-template #exporttModal>
+	<app-modal-layout [title]="'Upload File'" [objAction]="[
+	{ name: 'Cancel', className: 'modal-cancel-button' }, 
+	]" (onAction)="onActionImport($event)">
+		<div class="d-flex align-items-start gap-2">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <label for="file">Select a file to upload:</label>
+                <input type="file" id="file" name="file">
+                <button type="submit">Upload</button>
+              </form>
+		</div>
+	</app-modal-layout>
+</ng-template>
